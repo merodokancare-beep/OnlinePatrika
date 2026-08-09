@@ -1,0 +1,244 @@
+@model OnlinePatrika.ViewModels.AdminDashboardViewModel
+@{
+    ViewData["Title"] = Model.CurrentLang == "np" ? "समाचार प्रशासन ड्यासबोर्ड" : "Admin Dashboard";
+    bool isNp = Model.CurrentLang == "np";
+}
+
+<div class="container" style="padding: 28px 0;">
+    
+    <!-- Success Alert Message -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div style="background: rgba(16, 185, 129, 0.15); border-left: 4px solid #10B981; color: #10B981; padding: 14px 20px; border-radius: 8px; margin-bottom: 24px; font-weight: 600;">
+            <i class="fas fa-check-circle"></i> @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <!-- Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <div>
+            <h1 style="font-size: 1.8rem; font-weight: 800;">
+                <i class="fas fa-user-shield" style="color: var(--brand-blue);"></i> @(isNp ? "समाचार प्रशासन तथा अपलोड ड्यासबोर्ड" : "News Content Management & Admin Dashboard")
+            </h1>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                @(isNp ? "सामग्री अपलोड गर्नुहोस् (SQLite Persistence + ASP.NET Core 8.0 MVC)" : "Upload stories directly into SQLite Database via C# MVC")
+            </p>
+        </div>
+        <a asp-controller="Home" asp-action="Index" class="btn-primary" style="background: var(--bg-card); border: 1px solid var(--border-color); color: white;">
+            <i class="fas fa-globe"></i> <span>@(isNp ? "सार्वजनिक समाचार पोर्टल हेर्नुहोस्" : "View Public Site")</span>
+        </a>
+    </div>
+
+    <!-- Stats Cards Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 32px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+            <div style="width: 46px; height: 46px; background: linear-gradient(135deg, #D90429, #800020); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem;">
+                <i class="fas fa-newspaper"></i>
+            </div>
+            <div>
+                <div style="font-size: 1.6rem; font-weight: 800;">@Model.TotalArticles</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary);">@(isNp ? "कुल समाचार" : "Total Articles")</div>
+            </div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+            <div style="width: 46px; height: 46px; background: linear-gradient(135deg, #023E8A, #0077B6); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem;">
+                <i class="fas fa-eye"></i>
+            </div>
+            <div>
+                <div style="font-size: 1.6rem; font-weight: 800;">@Model.TotalViews</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary);">@(isNp ? "जम्मा भ्यूज" : "Total Views")</div>
+            </div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+            <div style="width: 46px; height: 46px; background: linear-gradient(135deg, #FFB703, #FB8500); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem;">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <div>
+                <div style="font-size: 1.6rem; font-weight: 800;">@Model.BreakingCount</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary);">@(isNp ? "ताजा खबर" : "Breaking News")</div>
+            </div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 16px;">
+            <div style="width: 46px; height: 46px; background: linear-gradient(135deg, #2A9D8F, #10B981); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem;">
+                <i class="fas fa-layer-group"></i>
+            </div>
+            <div>
+                <div style="font-size: 1.6rem; font-weight: 800;">@Model.ActiveCategoriesCount</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary);">@(isNp ? "सक्रिय विधाहरू" : "Active Menus")</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Upload Form Card per Category Menu -->
+    <div class="admin-card">
+        <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+            <i class="fas fa-pen-nib" style="color: var(--primary-red);"></i>
+            @(isNp ? "नयाँ समाचार अपलोड फारम (Upload Content As Per Menus)" : "Upload Article Per Menu Category")
+        </h2>
+
+        <form asp-controller="Admin" asp-action="Upload" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="All" style="background: rgba(239, 35, 60, 0.15); border-left: 4px solid #EF233C; color: #EF233C; padding: 12px 16px; border-radius: 6px; margin-bottom: 20px; font-weight: 600;"></div>
+
+            <!-- Category Menu Selector Dropdown -->
+            <div style="margin-bottom: 20px;">
+                <label style="font-weight: 700; display: block; margin-bottom: 6px; color: var(--brand-blue);">
+                    <i class="fas fa-list-ul"></i> @(isNp ? "समाचार विधा छान्नुहोस् (Select Target Menu Category) *" : "Select Menu Category *")
+                </label>
+                <select asp-for="UploadModel.CategoryId" class="form-control" style="font-size: 1rem; font-weight: 600; padding: 12px;" required>
+                    <option value="">-- विधा छान्नुहोस् / Choose Category --</option>
+                    @foreach (var cat in Model.UploadModel.Categories)
+                    {
+                        <option value="@cat.Id">@(isNp ? cat.NameNp : cat.NameEn) (@cat.Slug)</option>
+                    }
+                </select>
+            </div>
+
+            <!-- Dual Language Titles -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                <div>
+                    <label style="font-weight: 600; display: block; margin-bottom: 6px;">
+                        <i class="fas fa-language"></i> @(isNp ? "नेपाली शीर्षक (Nepali Title) *" : "Nepali Title *")
+                    </label>
+                    <input asp-for="UploadModel.TitleNp" class="form-control" placeholder="उदा: नेपालमा नयाँ प्रविधि विकास..." required />
+                </div>
+                <div>
+                    <label style="font-weight: 600; display: block; margin-bottom: 6px;">
+                        <i class="fas fa-globe"></i> @(isNp ? "अंग्रेजी शीर्षक (English Title)" : "English Title")
+                    </label>
+                    <input asp-for="UploadModel.TitleEn" class="form-control" placeholder="Ex: New Technology Development in Nepal..." />
+                </div>
+            </div>
+
+            <!-- Dual Language Excerpts -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                <div>
+                    <label style="font-weight: 600; display: block; margin-bottom: 6px;">नेपाली सारांश (Nepali Excerpt)</label>
+                    <textarea asp-for="UploadModel.ExcerptNp" class="form-control" rows="2" placeholder="छोटो २ लाइन सारांश..."></textarea>
+                </div>
+                <div>
+                    <label style="font-weight: 600; display: block; margin-bottom: 6px;">अंग्रेजी सारांश (English Excerpt)</label>
+                    <textarea asp-for="UploadModel.ExcerptEn" class="form-control" rows="2" placeholder="Short 2 line summary..."></textarea>
+                </div>
+            </div>
+
+            <!-- Dual Language Content Body -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                <div>
+                    <label style="font-weight: 600; display: block; margin-bottom: 6px;">नेपाली पूरा विवरण (Nepali Content) *</label>
+                    <textarea asp-for="UploadModel.ContentNp" class="form-control" rows="6" placeholder="नेपाली भाषामा विस्तृत समाचार सामग्री यहाँ लेख्नुहोस्..." required></textarea>
+                </div>
+                <div>
+                    <label style="font-weight: 600; display: block; margin-bottom: 6px;">अंग्रेजी पूरा विवरण (English Content)</label>
+                    <textarea asp-for="UploadModel.ContentEn" class="form-control" rows="6" placeholder="Write full article content in English here..."></textarea>
+                </div>
+            </div>
+
+            <!-- Image Upload & Author -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                <div>
+                    <label style="font-weight: 600; display: block; margin-bottom: 6px;">
+                        <i class="fas fa-image"></i> फोटो URL वा कम्प्युटरबाट फाइल छान्नुहोस्
+                    </label>
+                    <input asp-for="UploadModel.ImageUrl" class="form-control" placeholder="https://images.unsplash.com/..." style="margin-bottom: 8px;" />
+                    <input asp-for="UploadModel.ImageFile" type="file" class="form-control" accept="image/*" />
+                </div>
+                <div>
+                    <label style="font-weight: 600; display: block; margin-bottom: 6px;">संवाददाताको नाम (Author Name)</label>
+                    <input asp-for="UploadModel.Author" class="form-control" value="विशेष संवाददाता / Special Reporter" />
+                </div>
+            </div>
+
+            <!-- Toggles -->
+            <div style="display: flex; gap: 24px; margin-bottom: 24px;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input asp-for="UploadModel.IsBreaking" type="checkbox" style="width: 18px; height: 18px;" />
+                    <span>@(isNp ? "ताजा खबर (Breaking News) मा देखाउनुहोस्" : "Show in Breaking News Ticker")</span>
+                </label>
+
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input asp-for="UploadModel.IsFeatured" type="checkbox" style="width: 18px; height: 18px;" />
+                    <span>@(isNp ? "मुख्य आकर्षक कथा (Hero Featured Story) बनाउनुहोस्" : "Set as Hero Featured Story")</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn-primary" style="font-size: 1.05rem; padding: 14px 32px;">
+                <i class="fas fa-paper-plane"></i> @(isNp ? "SQLite डाटाबेसमा समाचार प्रकाशित गर्नुहोस्" : "Publish Article to SQLite Database")
+            </button>
+        </form>
+    </div>
+
+    <!-- All Articles List Table -->
+    <div class="admin-card">
+        <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+            <i class="fas fa-list-alt" style="color: var(--primary-red);"></i>
+            @(isNp ? "सबै प्रकाशित समाचार सूची (SQLite Managed Stories)" : "Managed Articles in SQLite Database")
+        </h2>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>फोटो</th>
+                        <th>शीर्षक र लेखक</th>
+                        <th>विधा (Menu Category)</th>
+                        <th>प्रकार</th>
+                        <th>भ्यूज</th>
+                        <th>कार्यहरू</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var art in Model.Articles)
+                    {
+                        <tr>
+                            <td><strong>#@art.Id</strong></td>
+                            <td><img src="@art.ImageUrl" style="width: 48px; height: 36px; object-fit: cover; border-radius: 4px;" alt="Img" /></td>
+                            <td>
+                                <div style="font-weight: 700; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                    @(isNp ? art.TitleNp : art.TitleEn)
+                                </div>
+                                <small style="color: var(--text-muted);">@art.Author</small>
+                            </td>
+                            <td>
+                                <span style="background: rgba(14, 165, 233, 0.15); color: #0EA5E9; padding: 3px 8px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700;">
+                                    @(isNp ? art.Category?.NameNp : art.Category?.NameEn)
+                                </span>
+                            </td>
+                            <td>
+                                @if (art.IsBreaking)
+                                {
+                                    <span style="background: rgba(239, 35, 60, 0.15); color: #EF233C; padding: 3px 8px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700;">ताजा खबर (Breaking)</span>
+                                }
+                                else
+                                {
+                                    <span style="color: var(--text-muted); font-size: 0.85rem;">सामान्य</span>
+                                }
+                            </td>
+                            <td><i class="far fa-eye"></i> @art.ViewsCount</td>
+                            <td>
+                                <div style="display: flex; gap: 8px;">
+                                    <form asp-controller="Admin" asp-action="ToggleBreaking" asp-route-id="@art.Id" method="post" style="display:inline;">
+                                        <button type="submit" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: white; width: 32px; height: 32px; border-radius: 4px; cursor: pointer;">
+                                            <i class="fas fa-bolt" style="color: @(art.IsBreaking ? "var(--primary-red)" : "var(--text-muted)");"></i>
+                                        </button>
+                                    </form>
+                                    <form asp-controller="Admin" asp-action="Delete" asp-route-id="@art.Id" method="post" style="display:inline;" onsubmit="return confirm('के तपाईं यो समाचार हटाउन निश्चित हुनुहुन्छ?');">
+                                        <button type="submit" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #EF233C; width: 32px; height: 32px; border-radius: 4px; cursor: pointer;">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

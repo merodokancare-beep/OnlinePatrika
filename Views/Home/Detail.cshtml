@@ -1,0 +1,57 @@
+@model OnlinePatrika.Models.Article
+@{
+    string lang = ViewBag.CurrentLang ?? "np";
+    bool isNp = lang == "np";
+    string displayTitle = isNp ? Model.TitleNp : (!string.IsNullOrEmpty(Model.TitleEn) ? Model.TitleEn : Model.TitleNp);
+    string displayContent = isNp ? Model.ContentNp : (!string.IsNullOrEmpty(Model.ContentEn) ? Model.ContentEn : Model.ContentNp);
+    ViewData["Title"] = displayTitle;
+    var related = ViewBag.RelatedArticles as List<OnlinePatrika.Models.Article> ?? new List<OnlinePatrika.Models.Article>();
+}
+
+<div class="container" style="padding: 32px 0;">
+    <div style="max-width: 860px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px;">
+        
+        <a asp-controller="Home" asp-action="Index" style="display: inline-flex; align-items: center; gap: 6px; color: var(--primary-red); font-weight: 600; margin-bottom: 16px;">
+            <i class="fas fa-arrow-left"></i> @(isNp ? "मुख्य पृष्ठमा फर्कनुहोस्" : "Back to Home")
+        </a>
+
+        <span class="category-tag">@(isNp ? Model.Category?.NameNp : Model.Category?.NameEn)</span>
+
+        <h1 style="font-size: 2.2rem; font-weight: 800; line-height: 1.3; margin: 12px 0 16px; color: var(--text-primary);">
+            @displayTitle
+        </h1>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 24px; font-size: 0.9rem; color: var(--text-secondary);">
+            <div><i class="far fa-user"></i> <strong>@Model.Author</strong></div>
+            <div><i class="far fa-calendar-alt"></i> @Model.DateBs</div>
+            <div><i class="far fa-eye"></i> @Model.ViewsCount @(isNp ? "भ्यूज" : "Views")</div>
+        </div>
+
+        <img src="@Model.ImageUrl" style="width: 100%; max-height: 440px; object-fit: cover; border-radius: 12px; margin-bottom: 24px;" alt="Article Image" />
+
+        <div style="font-size: 1.15rem; line-height: 1.8; color: var(--text-primary);">
+            @Html.Raw(displayContent.Replace("\n", "<br/><br/>"))
+        </div>
+
+        <!-- Related News -->
+        @if (related.Any())
+        {
+            <div style="margin-top: 48px; border-top: 2px solid var(--border-color); padding-top: 24px;">
+                <h3 style="font-size: 1.3rem; margin-bottom: 16px;"><i class="fas fa-newspaper" style="color: var(--primary-red);"></i> @(isNp ? "सम्बन्धित समाचारहरू" : "Related Articles")</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+                    @foreach (var item in related)
+                    {
+                        string itemTitle = isNp ? item.TitleNp : (!string.IsNullOrEmpty(item.TitleEn) ? item.TitleEn : item.TitleNp);
+                        <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 8px; padding: 12px;">
+                            <img src="@item.ImageUrl" style="width: 100%; height: 120px; object-fit: cover; border-radius: 6px; margin-bottom: 8px;" alt="News" />
+                            <h4 style="font-size: 0.95rem; font-weight: 700;">
+                                <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.Id">@itemTitle</a>
+                            </h4>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="nibGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+
+    <linearGradient id="crescentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(60, 60)">
+    <!-- Outer Crescent Moon Ring -->
+    <path d="M 10 -45 A 50 50 0 1 0 50 25 A 42 42 0 1 1 5 -35 Z" fill="url(#crescentGrad)" />
+
+    <!-- Pen Grip Base -->
+    <path d="M 12 -42 L 32 -26 L 24 -16 L 4 -32 Z" fill="#64748B" />
+
+    <!-- Fountain Pen Nib Body -->
+    <path d="M 6 -30 L 28 -14 C 18 10 -5 32 -30 45 C -15 20 -2 -5 6 -30 Z" fill="url(#nibGrad)" />
+
+    <!-- Breather Hole & Slit Cutout -->
+    <circle cx="-10" cy="12" r="5" fill="#0B0F17" />
+    <line x1="-10" y1="12" x2="-28" y2="42" stroke="#0B0F17" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+</svg>

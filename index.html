@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="np" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>अनलाइन पत्रिका - Online Patrika | नेपालको डिजिटल समाचार पोर्टल</title>
+  <meta name="description" content="नेपाल र संसारभरका ताजा र निष्पक्ष समाचार, विश्लेषण, राजनीति, अर्थतन्त्र, खेलकुद र प्रविधि।" />
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP UTILITY BAR
+       ========================================================================== -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <div class="date-badge" id="liveDateDisplay">
+          <i class="far fa-calendar-alt"></i> <span>वि.सं. २०८३ श्रावण २४, शनिबार</span>
+        </div>
+        <div class="weather-widget">
+          <i class="fas fa-sun"></i> <span>काठमाडौँ २५°C</span>
+        </div>
+        <div class="currency-widget">
+          <i class="fas fa-dollar-sign"></i> <span>USD/NPR: १३४.२०</span>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <div class="ctrl-group">
+          <!-- Language Switcher Button -->
+          <div class="lang-switcher" title="Language Switcher / भाषा परिवर्तन">
+            <button class="lang-btn active" data-lang="np" onclick="switchLanguage('np')">नेपाली</button>
+            <button class="lang-btn" data-lang="en" onclick="switchLanguage('en')">EN</button>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Dark/Light Mode Toggle">
+            <i class="fas fa-sun"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN HEADER & BRANDING
+       ========================================================================== -->
+  <header class="main-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <i class="fas fa-pen-nib"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name" data-i18n="siteName">अनलाइन पत्रिका</span>
+          <span class="brand-tagline" data-i18n="siteTagline">सत्य, तथ्य र निष्पक्ष समाचार पोर्टल</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <!-- Search Box -->
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" class="search-input" placeholder="समाचार खोज्नुहोस्..." data-i18n="searchPlaceholder" />
+        </div>
+
+        <!-- Admin Portal Link -->
+        <a href="admin.html" class="btn-admin" title="Admin Dashboard">
+          <i class="fas fa-user-shield"></i> <span data-i18n="adminPortal">समाचार प्रशासन</span>
+        </a>
+
+        <!-- Mobile Nav Hamburger Button -->
+        <button class="mobile-nav-toggle" id="mobileNavToggleBtn" aria-label="Toggle Navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR (CATEGORIES)
+       ========================================================================== -->
+  <nav class="nav-bar">
+    <div class="container">
+      <ul class="nav-links">
+        <li class="nav-link-item active" data-cat="all"><a href="#" data-i18n="categories.all">सबै समाचार</a></li>
+        <li class="nav-link-item" data-cat="politics"><a href="#" data-i18n="categories.politics">राजनीति</a></li>
+        <li class="nav-link-item" data-cat="economy"><a href="#" data-i18n="categories.economy">अर्थतन्त्र</a></li>
+        <li class="nav-link-item" data-cat="tech"><a href="#" data-i18n="categories.tech">प्रविधि</a></li>
+        <li class="nav-link-item" data-cat="sports"><a href="#" data-i18n="categories.sports">खेलकुद</a></li>
+        <li class="nav-link-item" data-cat="entertainment"><a href="#" data-i18n="categories.entertainment">मनोरञ्जन</a></li>
+        <li class="nav-link-item" data-cat="opinion"><a href="#" data-i18n="categories.opinion">विचार / टिप्पणी</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       BREAKING NEWS TICKER
+       ========================================================================== -->
+  <div class="breaking-ticker">
+    <div class="ticker-label">
+      <i class="fas fa-bolt"></i> <span data-i18n="breakingLabel">ताजा खबर</span>
+    </div>
+    <div class="ticker-wrapper">
+      <div class="ticker-content" id="breakingTickerContent">
+        <!-- Dynamic Breaking Items Rendered Here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MAIN HERO FEATURED SECTION
+       ========================================================================== -->
+  <main class="container hero-news-section">
+    <div class="hero-grid">
+      
+      <!-- Lead Feature Story -->
+      <div class="lead-story-card" id="heroLeadStory">
+        <!-- Rendered via JS -->
+      </div>
+
+      <!-- Side Trending Stories Column -->
+      <div class="trending-stories-column">
+        <div class="section-header-mini">
+          <h3><i class="fas fa-fire" style="color: var(--primary-red);"></i> <span data-i18n="categories.main">मुख्य प्राथमिकता</span></h3>
+        </div>
+        <div id="sideTrendingList" style="display: flex; flex-direction: column; gap: 14px;">
+          <!-- Side stories rendered via JS -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==========================================================================
+         LIVE AUDIO NEWS BULLETIN BAR (DEMO)
+         ========================================================================== -->
+    <div class="audio-news-banner">
+      <div class="audio-news-info">
+        <div class="audio-icon-wrap">
+          <i class="fas fa-broadcast-tower"></i>
+        </div>
+        <div class="audio-news-text">
+          <h4 data-i18n="liveAudioNews">रेडियो समाचार बुलेटिन</h4>
+          <p>अनलाइन पत्रिका रेडियो संस्करण - दैनिक ताजा समाचार प्रसारण</p>
+        </div>
+      </div>
+      <div class="audio-news-controls">
+        <button class="btn-audio-play" onclick="alert('रेडियो समाचार बुलेटिन प्ले हुँदैछ... / Playing Live Radio Bulletin...')">
+          <i class="fas fa-play"></i> <span data-i18n="listenNow">अहिले सुन्नुहोस्</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         ALL NEWS GRID
+         ========================================================================== -->
+    <div class="section-title-wrap">
+      <h2 class="section-title">
+        <i class="fas fa-layer-group" style="color: var(--primary-red);"></i>
+        <span data-i18n="categories.all">ताजा समाचार सङ्गालो</span>
+      </h2>
+    </div>
+
+    <div class="news-grid" id="mainNewsGrid">
+      <!-- Grid items rendered via JS -->
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       ARTICLE READER MODAL
+       ========================================================================== -->
+  <div class="modal-overlay" id="articleModal">
+    <div class="modal-container">
+      <button class="modal-close-btn" onclick="closeArticleModal()">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="modal-body" id="modalArticleBody">
+        <!-- Rendered dynamically on article click -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="brand-icon">
+              <i class="fas fa-pen-nib"></i>
+            </div>
+            <div class="brand-text">
+              <span class="brand-name" style="font-size: 1.5rem;" data-i18n="siteName">अनलाइन पत्रिका</span>
+            </div>
+          </div>
+          <p style="font-size: 0.92rem; line-height: 1.7;" data-i18n="footer.about">
+            अनलाइन पत्रिका नेपालको आधुनिक, निष्पक्ष र भरपर्दो डिजिटल समाचार माध्यम हो।
+          </p>
+        </div>
+
+        <div>
+          <h4 style="color: var(--text-primary); margin-bottom: 16px;" data-i18n="footer.quickLinks">महत्वपूर्ण लिङ्कहरू</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
+            <li><a href="#" data-i18n="categories.politics">राजनीति</a></li>
+            <li><a href="#" data-i18n="categories.economy">अर्थतन्त्र</a></li>
+            <li><a href="#" data-i18n="categories.tech">प्रविधि</a></li>
+            <li><a href="#" data-i18n="categories.sports">खेलकुद</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="color: var(--text-primary); margin-bottom: 16px;" data-i18n="footer.contact">सम्पर्क</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
+            <li><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer.address">काठमाडौँ, नेपाल</span></li>
+            <li><i class="fas fa-envelope"></i> <span data-i18n="footer.email">info@onlinepatrika.com.np</span></li>
+            <li><i class="fas fa-phone"></i> <span data-i18n="footer.phone">+९७७-१-४५६७८९०</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="color: var(--text-primary); margin-bottom: 16px;">हामीलाई पछ्याउनुहोस्</h4>
+          <div style="display: flex; gap: 12px;">
+            <a href="#" class="btn-action-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="btn-action-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="btn-action-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="btn-action-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div data-i18n="footer.copyright">© २०८३ अनलाइन पत्रिका। सर्वअधिकार सुरक्षित।</div>
+        <div>
+          <a href="admin.html" style="color: var(--primary-red); font-weight: 600;">
+            <i class="fas fa-lock"></i> <span data-i18n="adminPortal">समाचार प्रशासन लगइन</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

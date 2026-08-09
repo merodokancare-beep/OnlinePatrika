@@ -1,0 +1,181 @@
+@{
+    string currentLang = Context.Request.Cookies["PatrikaLang"] ?? "np";
+    bool isNepali = currentLang == "np";
+}
+<!DOCTYPE html>
+<html lang="@currentLang" data-theme="dark" data-font-size="medium">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - अनलाइन् खबर पत्रिका (Online Khabar Patrika)</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Mukta:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="~/css/styles.css" />
+
+    <!-- Early Theme & Font Size Script to prevent layout flash -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('patrikaTheme') || 'dark';
+            const savedFontSize = localStorage.getItem('patrikaFontSize') || 'medium';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            document.documentElement.setAttribute('data-font-size', savedFontSize);
+        })();
+    </script>
+</head>
+<body lang="@currentLang">
+
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-left">
+                <div class="date-badge">
+                    <i class="far fa-calendar-alt" style="color: var(--primary-red);"></i>
+                    <span>@(isNepali ? "वि.सं. २०८३ श्रावण २४, शनिबार" : "August 8, 2026, Saturday")</span>
+                </div>
+                <div><i class="fas fa-sun" style="color:#FFB703;"></i> काठमाडौँ २५°C</div>
+                <div><i class="fas fa-dollar-sign"></i> USD/NPR: १३४.२०</div>
+            </div>
+            <div class="top-bar-right">
+                <!-- Font Size Switcher Widget (Small, Medium, Large) -->
+                <div class="font-size-switcher" title="@(isNepali ? "अक्षरको आकार छान्नुहोस्" : "Select Font Size")">
+                    <button type="button" class="font-size-btn" data-size="small" title="@(isNepali ? "सानो अक्षर" : "Small Font")">A-</button>
+                    <button type="button" class="font-size-btn active" data-size="medium" title="@(isNepali ? "मध्यम अक्षर" : "Medium Font")">A</button>
+                    <button type="button" class="font-size-btn" data-size="large" title="@(isNepali ? "ठूलो अक्षर" : "Large Font")">A+</button>
+                </div>
+
+                <!-- Theme Switcher (Dark / Bright Mode) -->
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle Theme" title="@(isNepali ? "डार्क/लाइट थिम परिर्वतन गर्नुहोस्" : "Toggle Dark/Light Mode")">
+                    <i class="fas fa-sun"></i>
+                </button>
+
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <form asp-controller="Home" asp-action="SetLanguage" method="post" style="display:inline-flex;">
+                        <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                        <button type="submit" name="lang" value="np" class="lang-btn @(isNepali ? "active" : "")">नेपाली</button>
+                        <button type="submit" name="lang" value="en" class="lang-btn @(!isNepali ? "active" : "")">EN</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Logo -->
+    <header class="main-header">
+        <div class="container header-inner">
+            <a asp-controller="Home" asp-action="Index" class="brand-logo">
+                <img src="~/images/brand-logoEdited.jpeg" alt="अनलाइन् खबर पत्रिका" class="brand-logo-img" />
+            </a>
+
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <form asp-controller="Home" asp-action="Index" method="get" style="position: relative;" class="desktop-search">
+                    <i class="fas fa-search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #64748B;"></i>
+                    <input type="text" name="q" class="form-control" style="padding-left: 36px; border-radius: 9999px; width: 240px;" placeholder="@(isNepali ? "समाचार खोज्नुहोस्..." : "Search news...")" />
+                </form>
+
+                <a asp-controller="Admin" asp-action="Index" class="btn-primary" style="padding: 8px 18px; font-size: 0.88rem; border-radius: 9999px;">
+                    <i class="fas fa-user-shield"></i> <span>@(isNepali ? "समाचार प्रशासन" : "Admin Panel")</span>
+                </a>
+
+                <!-- Mobile Navigation Toggle Button -->
+                <button class="mobile-nav-toggle" id="mobileNavBtn" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer style="background: var(--bg-topbar); border-top: 1px solid var(--border-color); padding: 40px 0 20px; margin-top: 60px; color: var(--text-secondary);">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <div style="display: flex; align-items: center; gap: 14px;">
+                    <img src="~/images/brand-logoEdited.jpeg" style="height: 52px; width: auto; border-radius: 6px; mix-blend-mode: var(--logo-blend);" alt="Logo" />
+                    <div>
+                        <h3 style="color: var(--text-primary); margin-bottom: 2px;">@(isNepali ? "अनलाइन् खबर पत्रिका" : "Online Khabar Patrika")</h3>
+                        <p style="font-size: 0.88rem; color: var(--text-secondary);">@(isNepali ? "— निष्पक्ष र निर्भीक समाचार —" : "— Impartial & Fearless News —")</p>
+                    </div>
+                </div>
+                <div style="font-size: 0.88rem; color: var(--text-muted);">
+                    © २०८३ अनलाइन् खबर पत्रिका। सर्वअधिकार सुरक्षित। (ASP.NET Core 8.0 MVC + SQLite)
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Mobile Nav, Theme & Font Size Switcher Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const htmlTag = document.documentElement;
+
+            // 1. Mobile Menu Toggle
+            const btn = document.getElementById('mobileNavBtn');
+            const nav = document.querySelector('.nav-links');
+            if (btn && nav) {
+                btn.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                    const icon = btn.querySelector('i');
+                    if (icon) {
+                        icon.className = nav.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+                    }
+                });
+            }
+
+            // 2. Dark / Light Theme Toggle Switcher
+            const themeBtn = document.getElementById('themeToggleBtn');
+            function syncThemeIcon() {
+                if (!themeBtn) return;
+                const isDark = htmlTag.getAttribute('data-theme') === 'dark';
+                const icon = themeBtn.querySelector('i');
+                if (icon) {
+                    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+                }
+            }
+
+            syncThemeIcon();
+
+            if (themeBtn) {
+                themeBtn.addEventListener('click', function() {
+                    const currentTheme = htmlTag.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    htmlTag.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('patrikaTheme', newTheme);
+                    syncThemeIcon();
+                });
+            }
+
+            // 3. Font Size Switcher (Small, Medium, Large)
+            const fontBtns = document.querySelectorAll('.font-size-btn');
+            const currentFontSize = localStorage.getItem('patrikaFontSize') || 'medium';
+            htmlTag.setAttribute('data-font-size', currentFontSize);
+
+            fontBtns.forEach(fBtn => {
+                const btnSize = fBtn.getAttribute('data-size');
+                if (btnSize === currentFontSize) {
+                    fBtn.classList.add('active');
+                } else {
+                    fBtn.classList.remove('active');
+                }
+
+                fBtn.addEventListener('click', function() {
+                    const targetSize = this.getAttribute('data-size');
+                    htmlTag.setAttribute('data-font-size', targetSize);
+                    localStorage.setItem('patrikaFontSize', targetSize);
+
+                    fontBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

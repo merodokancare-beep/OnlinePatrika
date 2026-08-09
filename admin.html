@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="np" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>समाचार प्रशासन ड्यासबोर्ड - Online Patrika Admin</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="admin-layout">
+    <!-- ==========================================================================
+         ADMIN SIDEBAR
+         ========================================================================== -->
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <div class="admin-brand-icon">
+          <i class="fas fa-pen-nib"></i>
+        </div>
+        <div>
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: white;" data-i18n="siteName">अनलाइन पत्रिका</h3>
+          <small style="color: var(--text-muted);">Admin Panel v2.4</small>
+        </div>
+      </div>
+
+      <ul class="admin-nav">
+        <li class="admin-nav-item active">
+          <a href="#dashboard"><i class="fas fa-chart-line"></i> <span data-i18n="admin.analyticsTab">ड्यासबोर्ड</span></a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="#uploadNews"><i class="fas fa-plus-circle"></i> <span data-i18n="admin.createNewsTab">नयाँ समाचार अपलोड</span></a>
+        </li>
+        <li class="admin-nav-item">
+          <a href="#allArticles"><i class="fas fa-list-alt"></i> <span data-i18n="admin.manageNewsTab">सबै समाचार सूची</span></a>
+        </li>
+        <li class="admin-nav-item" style="margin-top: auto;">
+          <a href="index.html" style="background: rgba(255, 255, 255, 0.05); color: #FFF;">
+            <i class="fas fa-globe"></i> <span>सार्वजनिक पोर्टलमा जानुहोस्</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- ==========================================================================
+         MAIN ADMIN CONTENT AREA
+         ========================================================================== -->
+    <main class="admin-content">
+      
+      <!-- Top Admin Header -->
+      <div class="admin-header">
+        <div class="admin-title-wrap">
+          <h1 data-i18n="admin.dashboardTitle">समाचार व्यवस्थापन तथा प्रशासन ड्यासबोर्ड</h1>
+          <p data-i18n="admin.dashboardDesc">नयाँ समाचार अपलोड गर्नुहोस्, भाषा र विधा चयन गरी प्रकाशन गर्नुहोस्।</p>
+        </div>
+
+        <div class="ctrl-group">
+          <!-- Language Toggle Switcher -->
+          <div class="lang-switcher" title="Language Switcher">
+            <button class="lang-btn active" data-lang="np" onclick="switchAdminLang('np')">नेपाली</button>
+            <button class="lang-btn" data-lang="en" onclick="switchAdminLang('en')">EN</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================================================
+           STATS CARDS
+           ========================================================================== -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fas fa-newspaper"></i></div>
+          <div>
+            <div class="stat-val" id="statTotalArticles">0</div>
+            <div class="stat-label" data-i18n="admin.totalArticles">कुल प्रकाशित समाचार</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-eye"></i></div>
+          <div>
+            <div class="stat-val" id="statTotalViews">0</div>
+            <div class="stat-label" data-i18n="admin.todayViews">जम्मा समाचार भ्यूज</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon gold"><i class="fas fa-bolt"></i></div>
+          <div>
+            <div class="stat-val" id="statBreakingCount">0</div>
+            <div class="stat-label" data-i18n="admin.breakingCount">ताजा खबर सङ्ख्या</div>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-layer-group"></i></div>
+          <div>
+            <div class="stat-val">7</div>
+            <div class="stat-label" data-i18n="admin.activeCategory">सक्रिय विधाहरू</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================================================
+           NEWS UPLOAD FORM CARD
+           ========================================================================== -->
+      <section class="admin-card" id="uploadNews">
+        <div class="admin-card-header">
+          <h2 class="admin-card-title">
+            <i class="fas fa-pen-nib" style="color: var(--primary-red);"></i>
+            <span data-i18n="admin.createNewsTab">नयाँ समाचार अपलोड तथा प्रकाशन फारम</span>
+          </h2>
+        </div>
+
+        <form id="newsUploadForm">
+          <!-- Dual Language Title Fields -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="titleNp"><i class="fas fa-language"></i> <span data-i18n="admin.titleNp">नेपाली शीर्षक (Nepali Title) *</span></label>
+              <input type="text" id="titleNp" class="form-control" placeholder="उदा: नेपालमा नयाँ प्रविधि विकास..." required />
+            </div>
+            <div class="form-group">
+              <label for="titleEn"><i class="fas fa-globe"></i> <span data-i18n="admin.titleEn">अंग्रेजी शीर्षक (English Title)</span></label>
+              <input type="text" id="titleEn" class="form-control" placeholder="Ex: New Tech Milestone in Nepal..." />
+            </div>
+          </div>
+
+          <!-- Dual Language Excerpts -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="excerptNp" data-i18n="admin.excerptNp">नेपाली सारांश (Nepali Excerpt)</label>
+              <textarea id="excerptNp" class="form-control" rows="2" placeholder="छोटो २ लाइन सारांश..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="excerptEn" data-i18n="admin.excerptEn">अंग्रेजी सारांश (English Excerpt)</label>
+              <textarea id="excerptEn" class="form-control" rows="2" placeholder="Short 2 lines summary..."></textarea>
+            </div>
+          </div>
+
+          <!-- Dual Language Full Content -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="contentNp" data-i18n="admin.contentNp">नेपाली पूरा समाचार (Nepali Content) *</label>
+              <textarea id="contentNp" class="form-control" rows="6" placeholder="नेपाली भाषामा विस्तृत समाचार सामग्री यहाँ लेख्नुहोस्..." required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="contentEn" data-i18n="admin.contentEn">अंग्रेजी पूरा समाचार (English Content)</label>
+              <textarea id="contentEn" class="form-control" rows="6" placeholder="Write full article body content in English here..."></textarea>
+            </div>
+          </div>
+
+          <!-- Meta Controls Grid -->
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="newsCategory" data-i18n="admin.categoryLabel">समाचार विधा (Category)</label>
+              <select id="newsCategory" class="form-control">
+                <option value="politics">राजनीति (Politics)</option>
+                <option value="economy">अर्थतन्त्र (Economy)</option>
+                <option value="tech">प्रविधि (Technology)</option>
+                <option value="sports">खेलकुद (Sports)</option>
+                <option value="entertainment">मनोरञ्जन (Entertainment)</option>
+                <option value="opinion">विचार / टिप्पणी (Opinion)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="authorName">संवाददाताको नाम (Author / Reporter)</label>
+              <input type="text" id="authorName" class="form-control" value="विशेष संवाददाता / Special Reporter" />
+            </div>
+          </div>
+
+          <!-- Image Selector & File Upload -->
+          <div class="form-group">
+            <label for="featureImgUrl"><i class="fas fa-image"></i> <span data-i18n="admin.imageLabel">फिचर फोटो URL (Feature Image URL / Local Upload)</span></label>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <input type="text" id="featureImgUrl" class="form-control" style="flex: 1;" placeholder="https://images.unsplash.com/..." />
+              <label class="btn-primary" style="padding: 10px 16px; font-size: 0.88rem; cursor: pointer;">
+                <i class="fas fa-upload"></i> कम्प्युटरबाट फोटो छान्नुहोस्
+                <input type="file" id="localImgFile" accept="image/*" style="display: none;" />
+              </label>
+            </div>
+            <!-- Preset Image Quick Pickers -->
+            <div style="display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted);">
+              <span>द्रुत फोटोहरू छान्नुहोस् (Presets):</span>
+              <button type="button" class="btn-action-icon" style="width: auto; padding: 2px 8px; font-size: 0.78rem;" onclick="selectPresetImage('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800')">प्रविधि (Tech)</button>
+              <button type="button" class="btn-action-icon" style="width: auto; padding: 2px 8px; font-size: 0.78rem;" onclick="selectPresetImage('https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=800')">राजनीति (Politics)</button>
+              <button type="button" class="btn-action-icon" style="width: auto; padding: 2px 8px; font-size: 0.78rem;" onclick="selectPresetImage('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800')">अर्थ (Economy)</button>
+              <button type="button" class="btn-action-icon" style="width: auto; padding: 2px 8px; font-size: 0.78rem;" onclick="selectPresetImage('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=800')">खेलकुद (Sports)</button>
+            </div>
+          </div>
+
+          <!-- Feature Flags Checkboxes -->
+          <div style="display: flex; gap: 24px; margin: 20px 0;">
+            <label class="checkbox-group">
+              <input type="checkbox" id="isBreakingCheck" checked />
+              <span data-i18n="admin.isBreaking">ताजा खबर (Breaking News) मा देखाउनुहोस्</span>
+            </label>
+
+            <label class="checkbox-group">
+              <input type="checkbox" id="isFeaturedCheck" />
+              <span data-i18n="admin.isFeatured">मुख्य आकर्षक कथा (Hero Featured Story) बनाउनुहोस्</span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-primary" style="font-size: 1.05rem; padding: 14px 32px;">
+            <i class="fas fa-paper-plane"></i> <span data-i18n="admin.publishBtn">समाचार प्रकाशित गर्नुहोस्</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- ==========================================================================
+           ALL ARTICLES LIST & MANAGEMENT TABLE
+           ========================================================================== -->
+      <section class="admin-card" id="allArticles">
+        <div class="admin-card-header">
+          <h2 class="admin-card-title">
+            <i class="fas fa-tasks" style="color: var(--primary-red);"></i>
+            <span data-i18n="admin.manageNewsTab">सबै प्रकाशित समाचार सूची</span>
+          </h2>
+        </div>
+
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>फोटो</th>
+                <th>समाचार शीर्षक र लेखक</th>
+                <th>विधा</th>
+                <th>प्रकार</th>
+                <th>भ्यूज</th>
+                <th data-i18n="admin.actions">कार्यहरू</th>
+              </tr>
+            </thead>
+            <tbody id="adminArticlesTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
