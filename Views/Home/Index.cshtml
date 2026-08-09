@@ -87,7 +87,7 @@
                     <p style="color: #CBD5E1; margin-bottom: 12px;">@heroExcerpt</p>
                     <div style="display: flex; gap: 16px; font-size: 0.85rem; color: #94A3B8;">
                         <span><i class="far fa-user"></i> @Model.HeroArticle.Author</span>
-                        <span><i class="far fa-clock"></i> @Model.HeroArticle.DateBs</span>
+                        <span><i class="far fa-clock"></i> @(isNp ? Model.HeroArticle.DateBs : Model.HeroArticle.CreatedAtAd.ToString("MMM dd, yyyy"))</span>
                         <span><i class="far fa-eye"></i> @Model.HeroArticle.ViewsCount</span>
                     </div>
                 </div>

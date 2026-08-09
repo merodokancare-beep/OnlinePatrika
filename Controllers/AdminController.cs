@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlinePatrika.Data;
@@ -6,6 +7,7 @@ using OnlinePatrika.ViewModels;
 
 namespace OnlinePatrika.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _db;

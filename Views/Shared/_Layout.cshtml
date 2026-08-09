@@ -58,9 +58,26 @@
                     <form asp-controller="Home" asp-action="SetLanguage" method="post" style="display:inline-flex;">
                         <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
                         <button type="submit" name="lang" value="np" class="lang-btn @(isNepali ? "active" : "")">नेपाली</button>
-                        <button type="submit" name="lang" value="en" class="lang-btn @(!isNepali ? "active" : "")">EN</button>
+                        <button type="submit" name="lang" value="en" class="lang-btn @(!isNepali ? "active" : "")">English</button>
                     </form>
                 </div>
+
+                <!-- Quick Auth Login / Logout Link -->
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline-flex;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="lang-btn" style="background: rgba(239, 35, 60, 0.2); color: #FF6B6B; border: 1px solid rgba(239, 35, 60, 0.4); cursor: pointer;" title="@(isNepali ? "लगआउट" : "Logout")">
+                            <i class="fas fa-sign-out-alt"></i> @(isNepali ? "लगआउट" : "Logout")
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="lang-btn" style="background: rgba(217, 4, 41, 0.25); color: #FFF; border: 1px solid rgba(217, 4, 41, 0.5); text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" title="@(isNepali ? "लगइन गर्नुहोस्" : "Login")">
+                        <i class="fas fa-sign-in-alt"></i> @(isNepali ? "लगइन" : "Login")
+                    </a>
+                }
             </div>
         </div>
     </div>
@@ -78,9 +95,18 @@
                     <input type="text" name="q" class="form-control" style="padding-left: 36px; border-radius: 9999px; width: 240px;" placeholder="@(isNepali ? "समाचार खोज्नुहोस्..." : "Search news...")" />
                 </form>
 
-                <a asp-controller="Admin" asp-action="Index" class="btn-primary" style="padding: 8px 18px; font-size: 0.88rem; border-radius: 9999px;">
-                    <i class="fas fa-user-shield"></i> <span>@(isNepali ? "समाचार प्रशासन" : "Admin Panel")</span>
-                </a>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-controller="Admin" asp-action="Index" class="btn-primary" style="padding: 8px 18px; font-size: 0.88rem; border-radius: 9999px; background: linear-gradient(135deg, #10B981, #059669);">
+                        <i class="fas fa-user-shield"></i> <span>@(isNepali ? "प्रशासन ड्यासबोर्ड" : "Dashboard")</span>
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="btn-primary" style="padding: 8px 18px; font-size: 0.88rem; border-radius: 9999px; background: linear-gradient(135deg, #D90429, #EF233C); color: white; box-shadow: 0 4px 12px rgba(217, 4, 41, 0.35);">
+                        <i class="fas fa-user-lock"></i> <span>@(isNepali ? "लगइन" : "Login")</span>
+                    </a>
+                }
 
                 <!-- Mobile Navigation Toggle Button -->
                 <button class="mobile-nav-toggle" id="mobileNavBtn" aria-label="Toggle Menu">

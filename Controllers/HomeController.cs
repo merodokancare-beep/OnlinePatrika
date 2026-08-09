@@ -14,10 +14,10 @@ namespace OnlinePatrika.Controllers
             _db = db;
         }
 
-        // GET: / or /Home/Index?category=tech&lang=np
-        public async Task<IActionResult> Index(string category = "all", string q = "", string lang = "np")
+        // GET: / or /Home/Index?category=tech&lang=en
+        public async Task<IActionResult> Index(string category = "all", string q = "", string? lang = null)
         {
-            // Store language in Cookie or Session if provided
+            // Store language in Cookie if explicitly provided in query, otherwise read from Cookie
             if (!string.IsNullOrEmpty(lang))
             {
                 Response.Cookies.Append("PatrikaLang", lang, new CookieOptions { Expires = DateTimeOffset.Now.AddYears(1) });
@@ -42,9 +42,9 @@ namespace OnlinePatrika.Controllers
                 string queryLower = q.ToLower();
                 articlesQuery = articlesQuery.Where(a =>
                     a.TitleNp.ToLower().Contains(queryLower) ||
-                    a.TitleEn.ToLower().Contains(queryLower) ||
-                    a.ExcerptNp.ToLower().Contains(queryLower) ||
-                    a.ExcerptEn.ToLower().Contains(queryLower));
+                    (a.TitleEn != null && a.TitleEn.ToLower().Contains(queryLower)) ||
+                    (a.ExcerptNp != null && a.ExcerptNp.ToLower().Contains(queryLower)) ||
+                    (a.ExcerptEn != null && a.ExcerptEn.ToLower().Contains(queryLower)));
             }
 
             var allArticles = await articlesQuery.OrderByDescending(a => a.CreatedAtAd).ToListAsync();
@@ -67,8 +67,17 @@ namespace OnlinePatrika.Controllers
         }
 
         // GET: /Home/Detail/1
-        public async Task<IActionResult> Detail(int id, string lang = "np")
+        public async Task<IActionResult> Detail(int id, string? lang = null)
         {
+            if (!string.IsNullOrEmpty(lang))
+            {
+                Response.Cookies.Append("PatrikaLang", lang, new CookieOptions { Expires = DateTimeOffset.Now.AddYears(1) });
+            }
+            else
+            {
+                lang = Request.Cookies["PatrikaLang"] ?? "np";
+            }
+
             var article = await _db.Articles.Include(a => a.Category).FirstOrDefaultAsync(a => a.Id == id);
             if (article == null)
             {
@@ -79,7 +88,7 @@ namespace OnlinePatrika.Controllers
             article.ViewsCount += 1;
             await _db.SaveChangesAsync();
 
-            ViewBag.CurrentLang = string.IsNullOrEmpty(lang) ? (Request.Cookies["PatrikaLang"] ?? "np") : lang;
+            ViewBag.CurrentLang = lang;
             ViewBag.RelatedArticles = await _db.Articles.Where(a => a.CategoryId == article.CategoryId && a.Id != article.Id).Take(3).ToListAsync();
 
             return View(article);

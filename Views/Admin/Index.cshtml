@@ -24,9 +24,17 @@
                 @(isNp ? "सामग्री अपलोड गर्नुहोस् (SQLite Persistence + ASP.NET Core 8.0 MVC)" : "Upload stories directly into SQLite Database via C# MVC")
             </p>
         </div>
-        <a asp-controller="Home" asp-action="Index" class="btn-primary" style="background: var(--bg-card); border: 1px solid var(--border-color); color: white;">
-            <i class="fas fa-globe"></i> <span>@(isNp ? "सार्वजनिक समाचार पोर्टल हेर्नुहोस्" : "View Public Site")</span>
-        </a>
+        <div style="display: flex; gap: 10px; align-items: center;">
+            <a asp-controller="Home" asp-action="Index" class="btn-primary" style="background: var(--bg-card); border: 1px solid var(--border-color); color: white;">
+                <i class="fas fa-globe"></i> <span>@(isNp ? "सार्वजनिक समाचार पोर्टल हेर्नुहोस्" : "View Public Site")</span>
+            </a>
+            <form asp-controller="Account" asp-action="Logout" method="post" style="display: inline;">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn-primary" style="background: rgba(239, 35, 60, 0.2); border: 1px solid rgba(239, 35, 60, 0.4); color: #FF6B6B; cursor: pointer;">
+                    <i class="fas fa-sign-out-alt"></i> <span>@(isNp ? "लगआउट (Logout)" : "Logout")</span>
+                </button>
+            </form>
+        </div>
     </div>
 
     <!-- Stats Cards Grid -->

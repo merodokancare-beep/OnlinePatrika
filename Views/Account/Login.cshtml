@@ -1,0 +1,108 @@
+@model OnlinePatrika.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "प्रशासन लगइन - Online Patrika Admin Login";
+}
+
+<div class="login-wrapper" style="min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 40px 16px;">
+    <div class="login-card" style="background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); max-width: 450px; width: 100%; padding: 36px 32px; position: relative; overflow: hidden;">
+        
+        <!-- Ambient Red Glow -->
+        <div style="position: absolute; top: -50px; right: -50px; width: 140px; height: 140px; background: rgba(217, 4, 41, 0.25); filter: blur(50px); border-radius: 50%; pointer-events: none;"></div>
+
+        <!-- Header Brand Icon -->
+        <div style="text-align: center; margin-bottom: 28px;">
+            <div style="width: 68px; height: 68px; background: linear-gradient(135deg, #D90429, #800020); border-radius: 18px; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 2rem; box-shadow: 0 10px 25px rgba(217, 4, 41, 0.4); margin-bottom: 16px;">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2 style="font-size: 1.6rem; font-weight: 800; color: #FFFFFF; margin-bottom: 6px; letter-spacing: -0.5px;">
+                प्रशासन लगइन (Admin Login)
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                अनलाइन खबर पत्रिका प्रशासन प्रणालीमा लगइन गर्नुहोस्
+            </p>
+        </div>
+
+        <!-- Error Summary Alert -->
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div style="background: rgba(239, 35, 60, 0.15); border-left: 4px solid #EF233C; color: #FF6B6B; padding: 12px 16px; border-radius: 8px; margin-bottom: 24px; font-size: 0.88rem;">
+                <div asp-validation-summary="All"></div>
+            </div>
+        }
+
+        <form asp-controller="Account" asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <!-- Username Input -->
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-size: 0.88rem; font-weight: 600; color: #CBD5E1; margin-bottom: 8px;">
+                    <i class="fas fa-user" style="color: var(--primary-red); margin-right: 6px;"></i> प्रयोगकर्ता नाम (Username or Email)
+                </label>
+                <div style="position: relative;">
+                    <input asp-for="Username" class="form-control" placeholder="उदा: admin" style="width: 100%; padding: 12px 16px; font-size: 0.95rem; background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; color: #FFF; transition: all 0.3s ease;" required autofocus />
+                </div>
+                <span asp-validation-for="Username" style="color: #FF6B6B; font-size: 0.8rem; margin-top: 4px; display: block;"></span>
+            </div>
+
+            <!-- Password Input -->
+            <div style="margin-bottom: 22px;">
+                <label style="display: block; font-size: 0.88rem; font-weight: 600; color: #CBD5E1; margin-bottom: 8px;">
+                    <i class="fas fa-lock" style="color: var(--primary-red); margin-right: 6px;"></i> पासवर्ड (Password)
+                </label>
+                <div style="position: relative;">
+                    <input asp-for="Password" type="password" id="passwordInput" class="form-control" placeholder="••••••••" style="width: 100%; padding: 12px 42px 12px 16px; font-size: 0.95rem; background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; color: #FFF; transition: all 0.3s ease;" required />
+                    <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94A3B8; cursor: pointer; padding: 4px;">
+                        <i class="fas fa-eye" id="eyeIcon"></i>
+                    </button>
+                </div>
+                <span asp-validation-for="Password" style="color: #FF6B6B; font-size: 0.8rem; margin-top: 4px; display: block;"></span>
+            </div>
+
+            <!-- Remember Me & Help -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; font-size: 0.88rem;">
+                <label style="display: flex; align-items: center; gap: 8px; color: #94A3B8; cursor: pointer;">
+                    <input asp-for="RememberMe" type="checkbox" style="width: 16px; height: 16px; accent-color: var(--primary-red); cursor: pointer;" />
+                    <span>लगइन सम्झनुहोस् (Remember Me)</span>
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 1rem; font-weight: 700; border-radius: 10px; background: linear-gradient(135deg, #D90429, #EF233C); border: none; color: white; cursor: pointer; box-shadow: 0 8px 20px rgba(217, 4, 41, 0.35); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                <i class="fas fa-sign-in-alt"></i> ड्यासबोर्डमा लगइन गर्नुहोस् (Login)
+            </button>
+        </form>
+
+        <!-- Quick Demo Credentials Hint Box -->
+        <div style="margin-top: 28px; padding: 14px; background: rgba(30, 41, 59, 0.5); border: 1px dashed rgba(255, 255, 255, 0.15); border-radius: 10px; font-size: 0.82rem; color: #94A3B8; text-align: center;">
+            <div style="font-weight: 700; color: #CBD5E1; margin-bottom: 4px;">
+                <i class="fas fa-key" style="color: #FFB703;"></i> Demo Admin Credentials:
+            </div>
+            <div>Username: <strong style="color: #FFF;">admin</strong> | Password: <strong style="color: #FFF;">admin123</strong></div>
+        </div>
+
+        <!-- Back to Public Portal -->
+        <div style="text-align: center; margin-top: 20px;">
+            <a asp-controller="Home" asp-action="Index" style="color: #94A3B8; font-size: 0.88rem; text-decoration: none; transition: color 0.2s ease;">
+                <i class="fas fa-arrow-left"></i> मुख्य पृष्ठमा फर्कनुहोस् (Back to Main Portal)
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility() {
+        const passInput = document.getElementById('passwordInput');
+        const eyeIcon = document.getElementById('eyeIcon');
+        if (passInput.type === 'password') {
+            passInput.type = 'text';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        } else {
+            passInput.type = 'password';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+    }
+</script>
