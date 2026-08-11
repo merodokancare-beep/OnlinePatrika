@@ -69,7 +69,7 @@ const TRANSLATIONS = {
       about: "अनलाइन पत्रिका नेपालको आधुनिक, निष्पक्ष र भरपर्दो डिजिटल समाचार माध्यम हो। हामी विश्वासी समाचार, विश्लेषण र विचार सम्प्रेषण गर्दछौं।",
       quickLinks: "महत्वपूर्ण लिङ्कहरू",
       contact: "सम्पर्क",
-      address: "काठमाडौँ, नेपाल",
+      address: "सिक्किम, नेपाल",
       email: "info@onlinepatrika.com.np",
       phone: "+९७७-१-४५६७८९०",
       copyright: "© २०८३ अनलाइन पत्रिका। सर्वअधिकार सुरक्षित।"
@@ -142,7 +142,7 @@ const TRANSLATIONS = {
       about: "Online Patrika is Nepal's modern, impartial, and trusted digital news platform bringing reliable news, analysis, and insights daily.",
       quickLinks: "Quick Links",
       contact: "Contact Us",
-      address: "Kathmandu, Nepal",
+      address: "Sikkim, Nepal",
       email: "info@onlinepatrika.com.np",
       phone: "+977-1-4567890",
       copyright: "© 2026 Online Patrika. All rights reserved."
@@ -171,10 +171,10 @@ const INITIAL_ARTICLES = [
       en: "In collaboration with government and private sectors, a secure national digital infra was unveiled today."
     },
     content: {
-      np: `काठमाडौँ — नेपालमा प्रविधि र वित्तीय कारोबारलाई थप पारदर्शी र आधुनिक बनाउन नयाँ राष्ट्रिय डिजिटल भुक्तानी प्रणाली सञ्चालनमा आएको छ। 
+      np: `सिक्किम — नेपालमा प्रविधि र वित्तीय कारोबारलाई थप पारदर्शी र आधुनिक बनाउन नयाँ राष्ट्रिय डिजिटल भुक्तानी प्रणाली सञ्चालनमा आएको छ। 
       
       आज आयोजित उच्चस्तरीय डिजिटल समिटमा सूचना तथा सञ्चार प्रविधि मन्त्रालयले अत्याधुनिक पूर्वाधार विकासको घोषणा गरेको हो।`,
-      en: `KATHMANDU — In a landmark step toward transparency and technological elevation, a new national payment infrastructure has been officially launched in Nepal.`
+      en: `SIKKIM — In a landmark step toward transparency and technological elevation, a new national payment infrastructure has been officially launched in Nepal.`
     }
   },
   {
@@ -196,8 +196,8 @@ const INITIAL_ARTICLES = [
       en: "Provincial governments have launched major regional connectivity and infrastructure development projects."
     },
     content: {
-      np: `काठमाडौँ — सातै प्रदेश सरकारहरूले प्रादेशिक विकास योजनालाई थप प्रभावकारी बनाउन भौतिक पूर्वाधार र स्वास्थ्य सेवा सुदृढीकरण कार्यक्रम लागू गरेका छन्।`,
-      en: `KATHMANDU — Provincial governments across Nepal have initiated coordinated development agendas to upgrade regional roads and public health facilities.`
+      np: `सिक्किम — सातै प्रदेश सरकारहरूले प्रादेशिक विकास योजनालाई थप प्रभावकारी बनाउन भौतिक पूर्वाधार र स्वास्थ्य सेवा सुदृढीकरण कार्यक्रम लागू गरेका छन्।`,
+      en: `SIKKIM — Provincial governments across Nepal have initiated coordinated development agendas to upgrade regional roads and public health facilities.`
     }
   },
   {
@@ -242,10 +242,10 @@ const INITIAL_ARTICLES = [
       en: "The House of Representatives has unanimously approved the key national governance bill today."
     },
     content: {
-      np: `काठमाडौँ — प्रतिनिधिसभाको बैठकले राष्ट्रिय पूर्वाधार तथा औद्योगिक प्रवर्धन विधेयक २०८३ सर्वसम्मतले पारित गरेको छ। 
+      np: `सिक्किम — प्रतिनिधिसभाको बैठकले राष्ट्रिय पूर्वाधार तथा औद्योगिक प्रवर्धन विधेयक २०८३ सर्वसम्मतले पारित गरेको छ। 
       
       सभामुखले निर्णयार्थ पेस गर्नुभएको उक्त विधेयकमाथि सबै राजनीतिक दलका सांसदहरूले सहमति जनाएका हुन्।`,
-      en: `KATHMANDU — The House of Representatives has passed the landmark Infrastructure and Industrial Development Bill 2026 with unanimous support.`
+      en: `SIKKIM — The House of Representatives has passed the landmark Infrastructure and Industrial Development Bill 2026 with unanimous support.`
     }
   },
   {
@@ -267,8 +267,8 @@ const INITIAL_ARTICLES = [
       en: "The NEPSE index surged significantly on the closing day of the trading week, driven by strong investor confidence."
     },
     content: {
-      np: `काठमाडौँ — नेपाल स्टक एक्सचेन्ज (नेप्से) परिसूचकमा आज ५५ अंकको वृद्धि भएको छ।`,
-      en: `KATHMANDU — The Nepal Stock Exchange (NEPSE) index jumped 55 points today as investor sentiment turned strongly bullish.`
+      np: `सिक्किम — नेपाल स्टक एक्सचेन्ज (नेप्से) परिसूचकमा आज ५५ अंकको वृद्धि भएको छ।`,
+      en: `SIKKIM — The Nepal Stock Exchange (NEPSE) index jumped 55 points today as investor sentiment turned strongly bullish.`
     }
   },
   {
@@ -290,8 +290,8 @@ const INITIAL_ARTICLES = [
       en: "With stellar batting and disciplined bowling, Nepal outclassed rival teams to set a historic international record."
     },
     content: {
-      np: `काठमाडौँ — अन्तर्राष्ट्रिय टी-२० शृङ्खलाअन्तर्गत आज भएको सेमिफाइनल खेलमा नेपाली टोलीले सानदार जित हासिल गर्दै फाइनलको यात्रा तय गरेको छ।`,
-      en: `KATHMANDU — The Nepali Men's Cricket Team sealed a sensational victory in the T20 International Series semifinals today.`
+      np: `सिक्किम — अन्तर्राष्ट्रिय टी-२० शृङ्खलाअन्तर्गत आज भएको सेमिफाइनल खेलमा नेपाली टोलीले सानदार जित हासिल गर्दै फाइनलको यात्रा तय गरेको छ।`,
+      en: `SIKKIM — The Nepali Men's Cricket Team sealed a sensational victory in the T20 International Series semifinals today.`
     }
   },
   {
@@ -336,8 +336,8 @@ const INITIAL_ARTICLES = [
       en: "A stunning video report highlighting the breathtaking beauty of Mt. Everest and Annapurna Circuit."
     },
     content: {
-      np: `काठमाडौँ — नेपालको अद्वितीय प्राकृतिक दृश्य तथा सांस्कृति सम्पदालाई विश्वसामु चिनाउन निर्माण गरिएको विशेष भिडियो सार्वजनिक गरिएको छ।`,
-      en: `KATHMANDU — A newly produced high-definition video documentary exploring Nepal's natural wonders has been released today.`
+      np: `सिक्किम — नेपालको अद्वितीय प्राकृतिक दृश्य तथा सांस्कृति सम्पदालाई विश्वसामु चिनाउन निर्माण गरिएको विशेष भिडियो सार्वजनिक गरिएको छ।`,
+      en: `SIKKIM — A newly produced high-definition video documentary exploring Nepal's natural wonders has been released today.`
     }
   },
   {
@@ -359,8 +359,8 @@ const INITIAL_ARTICLES = [
       en: "A rich photo collection showcasing snow-capped mountains, vibrant festivals, and landscapes."
     },
     content: {
-      np: `काठमाडौँ — देशका विभिन्न भूभागका उत्कृष्ट फोटोग्राफरहरूले खिचेका मनमोहक तस्विरहरूको फोटो ग्यालरी सङ्गालो।`,
-      en: `KATHMANDU — Explore an exclusive gallery featuring breathtaking landscape photography from across Nepal.`
+      np: `सिक्किम — देशका विभिन्न भूभागका उत्कृष्ट फोटोग्राफरहरूले खिचेका मनमोहक तस्विरहरूको फोटो ग्यालरी सङ्गालो।`,
+      en: `SIKKIM — Explore an exclusive gallery featuring breathtaking landscape photography from across Nepal.`
     }
   }
 ];
