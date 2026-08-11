@@ -105,5 +105,66 @@ namespace OnlinePatrika.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
+        // GET: /Home/About
+        public IActionResult About()
+        {
+            ViewBag.CurrentLang = Request.Cookies["PatrikaLang"] ?? "np";
+            return View();
+        }
+
+        // GET: /Home/EditorialPolicy
+        public IActionResult EditorialPolicy()
+        {
+            ViewBag.CurrentLang = Request.Cookies["PatrikaLang"] ?? "np";
+            return View();
+        }
+
+        // GET: /Home/Ethics
+        public IActionResult Ethics()
+        {
+            ViewBag.CurrentLang = Request.Cookies["PatrikaLang"] ?? "np";
+            return View();
+        }
+
+        // GET: /Home/Privacy
+        public IActionResult Privacy()
+        {
+            ViewBag.CurrentLang = Request.Cookies["PatrikaLang"] ?? "np";
+            return View();
+        }
+
+        // GET: /Home/Terms
+        public IActionResult Terms()
+        {
+            ViewBag.CurrentLang = Request.Cookies["PatrikaLang"] ?? "np";
+            return View();
+        }
+
+        // GET: /Home/Contact
+        public IActionResult Contact()
+        {
+            ViewBag.CurrentLang = Request.Cookies["PatrikaLang"] ?? "np";
+            return View();
+        }
+
+        // POST: /Home/Contact
+        [HttpPost]
+        public IActionResult Contact(string senderName, string senderEmail, string subject, string message)
+        {
+            string lang = Request.Cookies["PatrikaLang"] ?? "np";
+            ViewBag.CurrentLang = lang;
+            TempData["SuccessMessage"] = lang == "np"
+                ? "धन्यवाद! तपाईंको सन्देश सफलतापूर्वक प्राप्त भयो। हाम्रा प्रतिनिधिले शीघ्र सम्पर्क गर्नेछन्।"
+                : "Thank you! Your message has been received. Our newsroom will respond shortly.";
+            return RedirectToAction(nameof(Contact));
+        }
+
+        // GET: /Home/Advertise
+        public IActionResult Advertise()
+        {
+            ViewBag.CurrentLang = Request.Cookies["PatrikaLang"] ?? "np";
+            return View();
+        }
     }
 }

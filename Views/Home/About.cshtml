@@ -1,0 +1,77 @@
+@{
+    string lang = ViewBag.CurrentLang ?? "np";
+    bool isNp = lang == "np";
+    ViewData["Title"] = isNp ? "हाम्रो बारेमा" : "About Us";
+}
+
+<div class="container" style="padding: 40px 0;">
+    <div style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 36px;">
+        
+        <h1 style="font-size: 2.2rem; font-weight: 800; border-bottom: 3px solid var(--primary-red); padding-bottom: 12px; margin-bottom: 24px; color: var(--text-primary);">
+            <i class="fas fa-newspaper" style="color: var(--primary-red);"></i> @(isNp ? "हाम्रो बारेमा (About Us)" : "About Online Khabar Patrika")
+        </h1>
+
+        <div style="display: flex; gap: 20px; align-items: center; background: rgba(217, 4, 41, 0.08); border: 1px solid rgba(217, 4, 41, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 28px;">
+            <img src="~/images/brand-logoEdited.jpeg" style="height: 64px; border-radius: 8px;" alt="Logo" />
+            <div>
+                <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--text-primary);">@(isNp ? "अनलाइन् खबर पत्रिका" : "Online Khabar Patrika")</h3>
+                <p style="color: var(--text-secondary); margin: 0;">@(isNp ? "सूचना विभाग दर्ता नं: १२३४/२०८२-८३ | प्रेस काउन्सिल नेपाल सूचीकृत" : "Department of Information Reg No: 1234/2082-83 | Press Council Nepal Enlisted")</p>
+            </div>
+        </div>
+
+        <div style="font-size: 1.08rem; line-height: 1.8; color: var(--text-primary);">
+            @if (isNp)
+            {
+                <p><strong>अनलाइन् खबर पत्रिका</strong> नेपालको स्वतन्त्र, निष्पक्ष र निर्भीक डिजिटल समाचार माध्यम हो। हामी नेपाल तथा विश्वभरिका ताजा समाचार, खोजमूलक रिपोर्टिङ, राजनीति, अर्थतन्त्र, खेलकुद र सामाजिक सरोकारका विषयहरू सत्य र तथ्यका आधारमा सम्प्रेषण गर्दछौं।</p>
+                
+                <h3 style="margin-top: 28px; color: var(--brand-blue);"><i class="fas fa-bullseye"></i> हाम्रो उद्देश्य र प्रतिबद्धता</h3>
+                <ul style="padding-left: 20px;">
+                    <li>लोकतान्त्रिक मूल्य, मान्यता र सुशासनको प्रवर्धन गर्ने।</li>
+                    <li>जनताको सूचना पाउने संवैधानिक अधिकारको संरक्षण र सम्मान गर्ने।</li>
+                    <li>व्यावसायिक पत्रकारिताको उच्च मर्मलाई आत्मसात् गर्दै पीत पत्रकारिता र अफवाहको विरोध गर्ने।</li>
+                    <li>सामाजिक सद्भाव, समावेशिता र बहुसांस्कृतिक एकतालाई बल पुर्‍याउने।</li>
+                </ul>
+
+                <h3 style="margin-top: 28px; color: var(--brand-blue);"><i class="fas fa-users-cog"></i> सम्पादकीय टोली तथा सञ्चालन</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px;">
+                    <div style="background: var(--bg-main); padding: 16px; border-radius: 10px; border: 1px solid var(--border-color);">
+                        <strong style="color: var(--primary-red); font-size: 1.1rem;">प्रधान सम्पादक</strong>
+                        <div style="font-size: 1rem; font-weight: 700; margin-top: 4px;">सुमन पोखरेल</div>
+                        <small style="color: var(--text-secondary);">editor@onlinepatrika.com.np</small>
+                    </div>
+                    <div style="background: var(--bg-main); padding: 16px; border-radius: 10px; border: 1px solid var(--border-color);">
+                        <strong style="color: var(--primary-red); font-size: 1.1rem;">प्रबन्ध सम्पादक</strong>
+                        <div style="font-size: 1rem; font-weight: 700; margin-top: 4px;">निर्मला श्रेष्ठ</div>
+                        <small style="color: var(--text-secondary);">news@onlinepatrika.com.np</small>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p><strong>Online Khabar Patrika</strong> is an independent, impartial, and fearless digital news organization based in Kathmandu, Nepal. We provide real-time national, economic, political, sports, and investigative reporting governed strictly by accuracy and professional journalism ethics.</p>
+                
+                <h3 style="margin-top: 28px; color: var(--brand-blue);"><i class="fas fa-bullseye"></i> Our Mission & Vision</h3>
+                <ul style="padding-left: 20px;">
+                    <li>Uphold democratic principles, freedom of expression, and good governance.</li>
+                    <li>Protect the public's constitutional right to authentic information.</li>
+                    <li>Maintain rigorous fact-checking standards and counter misinformation.</li>
+                    <li>Promote social harmony, diversity, and sustainable progress.</li>
+                </ul>
+
+                <h3 style="margin-top: 28px; color: var(--brand-blue);"><i class="fas fa-users-cog"></i> Editorial Leadership</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 16px;">
+                    <div style="background: var(--bg-main); padding: 16px; border-radius: 10px; border: 1px solid var(--border-color);">
+                        <strong style="color: var(--primary-red); font-size: 1.1rem;">Editor-in-Chief</strong>
+                        <div style="font-size: 1rem; font-weight: 700; margin-top: 4px;">Suman Pokharel</div>
+                        <small style="color: var(--text-secondary);">editor@onlinepatrika.com.np</small>
+                    </div>
+                    <div style="background: var(--bg-main); padding: 16px; border-radius: 10px; border: 1px solid var(--border-color);">
+                        <strong style="color: var(--primary-red); font-size: 1.1rem;">Managing Editor</strong>
+                        <div style="font-size: 1rem; font-weight: 700; margin-top: 4px;">Nirmala Shrestha</div>
+                        <small style="color: var(--text-secondary);">news@onlinepatrika.com.np</small>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

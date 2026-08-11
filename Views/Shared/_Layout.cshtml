@@ -118,19 +118,67 @@
 
     @RenderBody()
 
-    <!-- Footer -->
-    <footer style="background: var(--bg-topbar); border-top: 1px solid var(--border-color); padding: 40px 0 20px; margin-top: 60px; color: var(--text-secondary);">
+    <!-- Enhanced Newsroom Footer -->
+    <footer style="background: var(--bg-topbar); border-top: 1px solid var(--border-color); padding: 48px 0 24px; margin-top: 60px; color: var(--text-secondary);">
         <div class="container">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-                <div style="display: flex; align-items: center; gap: 14px;">
-                    <img src="~/images/brand-logoEdited.jpeg" style="height: 52px; width: auto; border-radius: 6px; mix-blend-mode: var(--logo-blend);" alt="Logo" />
-                    <div>
-                        <h3 style="color: var(--text-primary); margin-bottom: 2px;">@(isNepali ? "अनलाइन् खबर पत्रिका" : "Online Khabar Patrika")</h3>
-                        <p style="font-size: 0.88rem; color: var(--text-secondary);">@(isNepali ? "— निष्पक्ष र निर्भीक समाचार —" : "— Impartial & Fearless News —")</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-bottom: 32px;">
+                
+                <!-- Brand Info -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <img src="~/images/brand-logoEdited.jpeg" style="height: 48px; border-radius: 6px;" alt="Logo" />
+                        <div>
+                            <h3 style="color: var(--text-primary); margin: 0; font-size: 1.2rem;">@(isNepali ? "अनलाइन् खबर पत्रिका" : "Online Khabar Patrika")</h3>
+                            <small style="color: var(--text-muted);">@(isNepali ? "निष्पक्ष र निर्भीक डिजिटल पत्रिका" : "Impartial & Fearless News")</small>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary);">
+                        @(isNepali ? "सूचना विभाग दर्ता नं: १२३४/२०८२-८३ | प्रेस काउन्सिल नेपाल दर्ता सूचीकृत" : "Dept. of Information Reg No: 1234/2082-83 | Press Council Nepal Listed")
+                    </p>
+                    <div style="display: flex; gap: 10px; margin-top: 12px;">
+                        <a href="https://facebook.com" target="_blank" style="color: white; background: #1877F2; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com" target="_blank" style="color: white; background: #000; border: 1px solid #333; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fab fa-x-twitter"></i></a>
+                        <a href="https://youtube.com" target="_blank" style="color: white; background: #FF0000; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div style="font-size: 0.88rem; color: var(--text-muted);">
-                    © २०८३ अनलाइन् खबर पत्रिका। सर्वअधिकार सुरक्षित। (ASP.NET Core 8.0 MVC + SQLite)
+
+                <!-- Policies & Transparency Links -->
+                <div>
+                    <h4 style="color: var(--text-primary); font-size: 1.05rem; margin-bottom: 14px; border-left: 3px solid var(--primary-red); padding-left: 8px;">
+                        @(isNepali ? "नीति तथा आचारसंहिता" : "Policies & Ethics")
+                    </h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
+                        <li><a asp-controller="Home" asp-action="About" style="color: var(--text-secondary); text-decoration: none;"><i class="fas fa-angle-right" style="color: var(--primary-red); margin-right: 6px;"></i> @(isNepali ? "हाम्रो बारेमा (About Us)" : "About Us")</a></li>
+                        <li><a asp-controller="Home" asp-action="EditorialPolicy" style="color: var(--text-secondary); text-decoration: none;"><i class="fas fa-angle-right" style="color: var(--primary-red); margin-right: 6px;"></i> @(isNepali ? "सम्पादकीय र सच्याउने नीति" : "Editorial & Correction Policy")</a></li>
+                        <li><a asp-controller="Home" asp-action="Ethics" style="color: var(--text-secondary); text-decoration: none;"><i class="fas fa-angle-right" style="color: var(--primary-red); margin-right: 6px;"></i> @(isNepali ? "प्रेस आचारसंहिता (Code of Ethics)" : "Code of Ethics")</a></li>
+                        <li><a asp-controller="Home" asp-action="Privacy" style="color: var(--text-secondary); text-decoration: none;"><i class="fas fa-angle-right" style="color: var(--primary-red); margin-right: 6px;"></i> @(isNepali ? "गोपनीयता नीति (Privacy Policy)" : "Privacy Policy")</a></li>
+                        <li><a asp-controller="Home" asp-action="Terms" style="color: var(--text-secondary); text-decoration: none;"><i class="fas fa-angle-right" style="color: var(--primary-red); margin-right: 6px;"></i> @(isNepali ? "नियम तथा शर्तहरू (Terms)" : "Terms & Conditions")</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Media Kit Links -->
+                <div>
+                    <h4 style="color: var(--text-primary); font-size: 1.05rem; margin-bottom: 14px; border-left: 3px solid var(--brand-blue); padding-left: 8px;">
+                        @(isNepali ? "सम्पर्क र विज्ञापन" : "Contact & Media Kit")
+                    </h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem;">
+                        <li><a asp-controller="Home" asp-action="Contact" style="color: var(--text-secondary); text-decoration: none;"><i class="fas fa-headset" style="color: var(--brand-blue); margin-right: 6px;"></i> @(isNepali ? "सम्पर्क गर्नुहोस् (Contact Us)" : "Contact Us")</a></li>
+                        <li><a asp-controller="Home" asp-action="Advertise" style="color: var(--text-secondary); text-decoration: none;"><i class="fas fa-bullhorn" style="color: var(--brand-blue); margin-right: 6px;"></i> @(isNepali ? "विज्ञापन / मिडिया किट (Media Kit)" : "Advertise / Media Kit")</a></li>
+                        <li><span style="color: var(--text-muted);"><i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i> अनामनगर, काठमाडौँ</span></li>
+                        <li><span style="color: var(--text-muted);"><i class="fas fa-phone-alt" style="margin-right: 6px;"></i> +९७७-१-४५६७८९०</span></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div style="border-top: 1px solid var(--border-color); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.86rem; color: var(--text-muted);">
+                <div>
+                    © २०८३ अनलाइन् खबर पत्रिका। सर्वअधिकार सुरक्षित। (Google News JSON-LD SEO + ASP.NET Core 8.0)
+                </div>
+                <div>
+                    <a asp-controller="Account" asp-action="Login" style="color: var(--primary-red); text-decoration: none; font-weight: 600;">
+                        <i class="fas fa-user-lock"></i> @(isNepali ? "प्रशासन लगइन" : "Admin Portal")
+                    </a>
                 </div>
             </div>
         </div>

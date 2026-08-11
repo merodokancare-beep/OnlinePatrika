@@ -9,16 +9,15 @@
     {
         return slug switch
         {
-            "main" => "fa-star",
+            "national" => "fa-flag",
+            "state" => "fa-map-marked-alt",
+            "local" => "fa-city",
             "politics" => "fa-landmark",
             "economy" => "fa-chart-line",
-            "tech" => "fa-laptop-code",
             "sports" => "fa-futbol",
-            "entertainment" => "fa-film",
             "opinion" => "fa-pen-nib",
-            "world" => "fa-globe",
-            "health" => "fa-heartbeat",
-            "pradesh" => "fa-map-marked-alt",
+            "video" => "fa-video",
+            "photo-gallery" => "fa-images",
             _ => "fa-newspaper"
         };
     }
@@ -30,15 +29,15 @@
         <ul class="nav-links">
             <li class="nav-link-item @(Model.SelectedCategorySlug == "all" ? "active" : "")">
                 <a asp-controller="Home" asp-action="Index" asp-route-category="all">
-                    <i class="fas fa-th-large" style="margin-right: 10px; opacity: 0.85; width: 18px; text-align: center;"></i>
-                    <span>@(isNp ? "सबै समाचार" : "All News")</span>
+                    <i class="fas fa-home" style="margin-right: 8px; opacity: 0.9; width: 18px; text-align: center;"></i>
+                    <span>@(isNp ? "गृहपृष्ठ" : "Home")</span>
                 </a>
             </li>
             @foreach (var cat in Model.Categories)
             {
                 <li class="nav-link-item @(Model.SelectedCategorySlug == cat.Slug ? "active" : "")">
                     <a asp-controller="Home" asp-action="Index" asp-route-category="@cat.Slug">
-                        <i class="fas @GetCategoryIcon(cat.Slug)" style="margin-right: 10px; opacity: 0.85; width: 18px; text-align: center;"></i>
+                        <i class="fas @GetCategoryIcon(cat.Slug)" style="margin-right: 8px; opacity: 0.9; width: 18px; text-align: center;"></i>
                         <span>@(isNp ? cat.NameNp : cat.NameEn)</span>
                     </a>
                 </li>

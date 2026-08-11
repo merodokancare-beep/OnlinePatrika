@@ -1,0 +1,43 @@
+@{
+    string lang = ViewBag.CurrentLang ?? "np";
+    bool isNp = lang == "np";
+    ViewData["Title"] = isNp ? "प्रेस आचारसंहिता" : "Code of Ethics";
+}
+
+<div class="container" style="padding: 40px 0;">
+    <div style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 36px;">
+        
+        <h1 style="font-size: 2.2rem; font-weight: 800; border-bottom: 3px solid var(--primary-red); padding-bottom: 12px; margin-bottom: 24px; color: var(--text-primary);">
+            <i class="fas fa-balance-scale" style="color: var(--primary-red);"></i> @(isNp ? "पत्रकार आचारसंहिता (Code of Ethics)" : "Journalist Code of Ethics")
+        </h1>
+
+        <div style="font-size: 1.08rem; line-height: 1.8; color: var(--text-primary);">
+            @if (isNp)
+            {
+                <p>अनलाइन् खबर पत्रिका **प्रेस काउन्सिल नेपाल** द्वारा जारी पत्रकार आचारसंहिता २०७३ (संशोधित) र अन्तर्राष्ट्रिय पत्रकारिताका सर्वमान्य सिद्धान्तहरूप्रति पूर्ण प्रतिबद्ध छ।</p>
+                
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-shield-alt"></i> मुख्य आचारसंहिता सिद्धान्तहरू:</h3>
+                <ol style="padding-left: 20px;">
+                    <li><strong>सत्यता र निष्पक्षता:</strong> अफवाह, कपोलकल्पित वा भ्रामक सूचना प्रकाशित नगर्ने।</li>
+                    <li><strong>व्यक्तिगत गोपनीयताको सम्मान:</strong> व्यक्तिको आँच आउने, अनधिकृत तस्विर वा चरित्र हत्या गर्ने सामग्री निषेध।</li>
+                    <li><strong>बालबालिका र पीडितको संरक्षण:</strong> अपराधका पीडित, बालबालिका तथा यौन हिंसाका घटनामा पहिचान गोप्य राख्ने।</li>
+                    <li><strong>जातीय, धार्मिक र लैङ्गिक सद्भाव:</strong> कुनै पनि समुदायविरुद्ध घृणा फैलाउने भाषा (Hate Speech) को प्रयोग नगर्ने।</li>
+                    <li><strong>हितको द्वन्द्व (Conflict of Interest):</strong> पत्रकारले व्यक्तिगत फाइदाका लागि सूचनाको दुरुपयोग नगर्ने।</li>
+                </ol>
+            }
+            else
+            {
+                <p>Online Khabar Patrika is committed to upholding the Journalist Code of Ethics established by the Press Council of Nepal and global professional norms.</p>
+                
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-shield-alt"></i> Key Ethical Principles:</h3>
+                <ol style="padding-left: 20px;">
+                    <li><strong>Truth & Accuracy:</strong> Zero tolerance for fabrication, clickbait, or unverified rumors.</li>
+                    <li><strong>Privacy Protection:</strong> Respecting individual dignity and privacy rights.</li>
+                    <li><strong>Protection of Minors & Victims:</strong> Safeguarding identities of crime victims and children.</li>
+                    <li><strong>Anti-Discrimination:</strong> Strict ban on hate speech, incitement, or racial/cultural bias.</li>
+                    <li><strong>Conflict of Interest:</strong> Absolute transparency in reporting without personal or financial bias.</li>
+                </ol>
+            }
+        </div>
+    </div>
+</div>

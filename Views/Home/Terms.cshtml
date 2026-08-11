@@ -1,0 +1,37 @@
+@{
+    string lang = ViewBag.CurrentLang ?? "np";
+    bool isNp = lang == "np";
+    ViewData["Title"] = isNp ? "नियम तथा शर्तहरू" : "Terms & Conditions";
+}
+
+<div class="container" style="padding: 40px 0;">
+    <div style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 36px;">
+        
+        <h1 style="font-size: 2.2rem; font-weight: 800; border-bottom: 3px solid var(--primary-red); padding-bottom: 12px; margin-bottom: 24px; color: var(--text-primary);">
+            <i class="fas fa-file-contract" style="color: var(--primary-red);"></i> @(isNp ? "नियम तथा शर्तहरू (Terms & Conditions)" : "Terms & Conditions")
+        </h1>
+
+        <div style="font-size: 1.08rem; line-height: 1.8; color: var(--text-primary);">
+            @if (isNp)
+            {
+                <p>अनलाइन् खबर पत्रिका पोर्टल प्रयोग गर्दा पाठक तथा प्रयोगकर्ताले निम्न नियम तथा शर्तहरूको पालना गर्नुपर्नेछ:</p>
+                
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-copyright"></i> १. सर्वाधिकार (Copyright)</h3>
+                <p>यस पोर्टलमा प्रकाशित पाठ, फोटो, भिडियो तथा ग्राफिक्स अनलाइन् खबर पत्रिकाको सम्पत्ति हुन्। पूर्वअनुमतिविना पुनःप्रकाशन गर्न पाइने छैन।</p>
+
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-comments"></i> २. प्रतिक्रिया तथा कमेन्ट नीति</h3>
+                <p>पाठकले प्रतिक्रिया दिँदा अश्लील, भ्रामक वा घृणास्पद भाषा प्रयोग गर्न पाइने छैन। सम्पादक मण्डलसँग अमर्यादित कमेन्ट हटाउने अधिकार सुरक्षित रहनेछ।</p>
+            }
+            else
+            {
+                <p>By accessing Online Khabar Patrika, users agree to abide by the following terms and guidelines:</p>
+                
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-copyright"></i> 1. Copyright & Intellectual Property</h3>
+                <p>All articles, graphics, photo stories, and video content are owned by Online Khabar Patrika. Reproduction without prior written credit is prohibited.</p>
+
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-comments"></i> 2. User Comment Policy</h3>
+                <p>Comments containing hate speech, harassment, or defamation will be moderated and removed immediately.</p>
+            }
+        </div>
+    </div>
+</div>

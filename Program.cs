@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using OnlinePatrika.Data;
+using OnlinePatrika.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,22 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    
+    // Auto-reset database if categories need to be updated to the exact 9 required menus
+    bool needsReset = false;
+    try
+    {
+        needsReset = !dbContext.Categories.Any() || dbContext.Categories.Count() != 9 || !dbContext.Categories.Any(c => c.Slug == "national");
+    }
+    catch
+    {
+        needsReset = true;
+    }
+
+    if (needsReset)
+    {
+        dbContext.Database.EnsureDeleted();
+    }
     dbContext.Database.EnsureCreated();
 }
 

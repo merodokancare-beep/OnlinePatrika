@@ -1,0 +1,55 @@
+@{
+    string lang = ViewBag.CurrentLang ?? "np";
+    bool isNp = lang == "np";
+    ViewData["Title"] = isNp ? "सम्पादकीय तथा सच्याउने नीति" : "Editorial & Correction Policy";
+}
+
+<div class="container" style="padding: 40px 0;">
+    <div style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 36px;">
+        
+        <h1 style="font-size: 2.2rem; font-weight: 800; border-bottom: 3px solid var(--primary-red); padding-bottom: 12px; margin-bottom: 24px; color: var(--text-primary);">
+            <i class="fas fa-edit" style="color: var(--primary-red);"></i> @(isNp ? "सम्पादकीय नीति तथा सच्याउने प्रक्रिया (Editorial & Correction Policy)" : "Editorial & Correction Policy")
+        </h1>
+
+        <div style="font-size: 1.08rem; line-height: 1.8; color: var(--text-primary);">
+            @if (isNp)
+            {
+                <h3 style="color: var(--brand-blue);"><i class="fas fa-check-double"></i> १. तथ्यपरकता र निष्पक्षता (Accuracy & Impartiality)</h3>
+                <p>अनलाइन् खबर पत्रिकामा प्रकाशित हुने हरेक समाचार, विचार र रिपोर्टिङ तथ्य र प्रमाणमा आधारित हुन्छन्। कुनै पनि राजनीतिक, व्यावसायिक वा व्यक्तिगत प्रभावबाट मुक्त रही निष्पक्ष समाचार सम्प्रेषण गर्नु हाम्रो मूल दायित्व हो।</p>
+
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-user-shield"></i> २. स्रोतको गोपनीयता र सत्यापन (Source Verification)</h3>
+                <p>हामी प्रत्येक समाचारका स्रोतहरूको गहन परीक्षण गर्दछौं। संवेदनशील विषयमा स्रोतको सुरक्षा गर्न गोपनीयता कायम राखिन्छ।</p>
+
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-wrench"></i> ३. सच्याउने नीति (Correction Policy)</h3>
+                <p>यदि प्रकाशित समाचारमा असावधानीवश त्रुटि वा असत्य तथ्य पर्न गएमा, अनलाइन् खबर पत्रिकाले त्यसलाई पारदर्शी रूपमा सच्याउने प्रतिबद्धता व्यक्त गर्दछ:</p>
+                <ul style="padding-left: 20px;">
+                    <li>त्रुटि थाहा हुनासाथ तुरुन्त सम्पादक टोलीले संशोधन गर्नेछ।</li>
+                    <li>समाचारको तल <strong>"सच्याइएको:" (Correction Note)</strong> स्पष्ट रूपमा उल्लेख गरी के र कहिले सच्याइयो स्पष्ट पारिनेछ।</li>
+                    <li>यदि पाठक वा सरोकारवालाबाट गम्भीर असहमति वा तथ्यगत प्रमाण प्राप्त भएमा सम्पादक मण्डलले २४ घण्टभित्र समीक्षा गर्नेछ।</li>
+                </ul>
+
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-envelope"></i> त्रुटि जानकारी गराउने सम्पर्क</h3>
+                <p>समाचारमा कुनै गल्ती भेटिएमा कृपया हामीलाई <strong>corrections@onlinepatrika.com.np</strong> मा इमेल गर्नुहोला।</p>
+            }
+            else
+            {
+                <h3 style="color: var(--brand-blue);"><i class="fas fa-check-double"></i> 1. Accuracy & Impartiality</h3>
+                <p>All stories published on Online Khabar Patrika adhere to strict standards of factual truth and verifiable evidence. Our editorial team remains entirely independent of commercial, political, or personal influences.</p>
+
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-user-shield"></i> 2. Source Verification & Confidentiality</h3>
+                <p>We rigorously verify all statements and claims before publication. Confidential sources are protected in accordance with international journalistic protections and Nepali press laws.</p>
+
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-wrench"></i> 3. Correction Policy</h3>
+                <p>When factual errors or typos occur, we correct them swiftly and transparently:</p>
+                <ul style="padding-left: 20px;">
+                    <li>Corrections are updated immediately in the live article.</li>
+                    <li>A clear <strong>"Correction Note"</strong> timestamped at the bottom explains what was updated and why.</li>
+                    <li>Factual concerns reported by readers are reviewed by editors within 24 hours.</li>
+                </ul>
+
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-envelope"></i> Reporting Corrections</h3>
+                <p>To report a factual error, please email our news desk at <strong>corrections@onlinepatrika.com.np</strong>.</p>
+            }
+        </div>
+    </div>
+</div>

@@ -1,6 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
+@{
+    string lang = ViewBag.CurrentLang ?? "np";
+    bool isNp = lang == "np";
+    ViewData["Title"] = isNp ? "गोपनीयता नीति" : "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="container" style="padding: 40px 0;">
+    <div style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 36px;">
+        
+        <h1 style="font-size: 2.2rem; font-weight: 800; border-bottom: 3px solid var(--primary-red); padding-bottom: 12px; margin-bottom: 24px; color: var(--text-primary);">
+            <i class="fas fa-user-lock" style="color: var(--primary-red);"></i> @(isNp ? "गोपनीयता नीति (Privacy Policy)" : "Privacy Policy")
+        </h1>
+
+        <div style="font-size: 1.08rem; line-height: 1.8; color: var(--text-primary);">
+            @if (isNp)
+            {
+                <p>अनलाइन् खबर पत्रिका हाम्रा पाठकहरूको गोपनीयताको पूर्ण कदर गर्दछ। यो गोपनीयता नीतिले हामी कसरी सूचना सङ्कलन र प्रयोग गर्छौं भन्ने स्पष्ट पार्दछ।</p>
+                
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-cookie-bite"></i> १. कुकीहरू (Cookies)</h3>
+                <p>हाम्रो साइटमा भाषा चयन (नेपाली/अंग्रेजी), थिम (डार्क/लाइट) र फन्ट साइज सुरक्षित राख्न कुकीहरूको प्रयोग गरिन्छ। कुकीहरूले प्रयोगकर्ताको व्यक्तिगत गोप्य विवरण सङ्कलन गर्दैनन्।</p>
+
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-chart-bar"></i> २. वेबसाइट एनालिटिक्स</h3>
+                <p>साइटको कार्यसम्पादन सुधार्न पाठकहरूको भ्युज काउन्ट र प्राविधिक तथ्यांक सङ्कलन गरिन्छ। यो तथ्यांक पूर्णतया अज्ञात (Anonymous) हुन्छ।</p>
+            }
+            else
+            {
+                <p>Online Khabar Patrika respects reader privacy. This policy outlines how information is gathered and protected across our digital services.</p>
+                
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-cookie-bite"></i> 1. Cookie Usage</h3>
+                <p>We use essential cookies to remember your display theme, font size preference, and active language (Nepali/English). No sensitive personal data is stored.</p>
+
+                <h3 style="color: var(--brand-blue); margin-top: 24px;"><i class="fas fa-chart-bar"></i> 2. Analytics</h3>
+                <p>Anonymous page view data and aggregated statistics are collected solely to improve platform performance and news accessibility.</p>
+            }
+        </div>
+    </div>
+</div>

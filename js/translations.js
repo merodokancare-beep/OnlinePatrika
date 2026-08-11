@@ -23,16 +23,16 @@ const TRANSLATIONS = {
     // Categories / Menus
     categories: {
       all: "सबै समाचार",
-      main: "मुख्य समाचार",
+      home: "गृहपृष्ठ",
+      national: "राष्ट्रिय",
+      state: "राज्य",
+      local: "स्थानीय",
       politics: "राजनीति",
-      economy: "अर्थतन्त्र",
-      tech: "सूचना प्रविधि",
+      economy: "अर्थ/व्यापार",
       sports: "खेलकुद",
-      entertainment: "मनोरञ्जन",
-      opinion: "विचार / टिप्पणी",
-      world: "अन्तर्राष्ट्रिय",
-      health: "स्वास्थ्य र जीवनशैली",
-      pradesh: "प्रदेश / स्थानीय"
+      opinion: "विचार",
+      video: "भिडियो",
+      photoGallery: "फोटो ग्यालरी"
     },
 
     // Admin Labels
@@ -96,13 +96,16 @@ const TRANSLATIONS = {
     // Categories
     categories: {
       all: "All News",
-      main: "Main Stories",
+      home: "Home",
+      national: "National",
+      state: "State",
+      local: "Local",
       politics: "Politics",
-      economy: "Economy",
-      tech: "Technology",
+      economy: "Economy / Business",
       sports: "Sports",
-      entertainment: "Entertainment",
-      opinion: "Opinion & Editorial"
+      opinion: "Opinion",
+      video: "Video",
+      photoGallery: "Photo Gallery"
     },
 
     // Admin Labels
@@ -151,7 +154,7 @@ const TRANSLATIONS = {
 const INITIAL_ARTICLES = [
   {
     id: "art-101",
-    category: "tech",
+    category: "national",
     isBreaking: true,
     isFeatured: true,
     views: 1450,
@@ -160,55 +163,93 @@ const INITIAL_ARTICLES = [
     dateAd: "August 8, 2026",
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop",
     title: {
-      np: "नेपालमा अत्याधुनिक डिजिटल भुक्तानी र एआई प्रविधि सञ्चालनमा, अर्थतन्त्रमा नयाँ क्रान्ति",
-      en: "Advanced Digital Payments & AI Ecosystem Launched in Nepal, Fueling New Economic Era"
+      np: "नेपालमा अत्याधुनिक डिजिटल भुक्तानी र राष्ट्रिय पूर्वाधार प्रविधि सञ्चालनमा",
+      en: "Advanced National Digital Payments & Infrastructure Launched in Nepal"
     },
     excerpt: {
-      np: "नेपाल सरकार र निजी क्षेत्रको सहकार्यमा सुरक्षित राष्ट्रिय डिजिटल संरचना र डिजिटल पूर्वाधारको शुभारम्भ गरिएको छ।",
-      en: "In collaboration with government and private sectors, a secure national digital infra and AI ecosystem was unveiled today."
+      np: "नेपाल सरकार र निजी क्षेत्रको सहकार्यमा सुरक्षित राष्ट्रिय डिजिटल संरचना र पूर्वाधारको शुभारम्भ गरिएको छ।",
+      en: "In collaboration with government and private sectors, a secure national digital infra was unveiled today."
     },
     content: {
-      np: `काठमाडौँ — नेपालमा प्रविधि र वित्तीय कारोबारलाई थप पारदर्शी र आधुनिक बनाउन नयाँ राष्ट्रिय एआई र डिजिटल भुक्तानी प्रणाली सञ्चालनमा आएको छ। 
+      np: `काठमाडौँ — नेपालमा प्रविधि र वित्तीय कारोबारलाई थप पारदर्शी र आधुनिक बनाउन नयाँ राष्ट्रिय डिजिटल भुक्तानी प्रणाली सञ्चालनमा आएको छ। 
       
-      आज आयोजित उच्चस्तरीय डिजिटल समिटमा सूचना तथा सञ्चार प्रविधि मन्त्रालयले अत्याधुनिक एआई पूर्वाधार विकासको घोषणा गरेको हो। यस प्रणालीले वित्तीय क्षेत्र, स्वास्थ्य सेवा, शिक्षा र सरकारी सेवा प्रवाहलाई द्रुत र नागरिकमैत्री बनाउने अपेक्षा गरिएको छ।
-      
-      विशेषज्ञहरूका अनुसार यो कदमले नेपाली युवा जनशक्तिलाई स्वदेशमै रोजगार तथा प्रविधि आविष्कारका अवसरहरू सिर्जना गर्नेछ।`,
-      en: `KATHMANDU — In a landmark step toward transparency and technological elevation, a new national AI & payment infrastructure has been officially launched in Nepal.
-      
-      Announced at the High-Level Digital Summit today, the initiative promises to streamline government services, financial transaction systems, healthcare, and education access across all 77 districts.
-      
-      Industry leaders believe this major milestone will boost tech job opportunities for Nepali youth within the country.`
+      आज आयोजित उच्चस्तरीय डिजिटल समिटमा सूचना तथा सञ्चार प्रविधि मन्त्रालयले अत्याधुनिक पूर्वाधार विकासको घोषणा गरेको हो।`,
+      en: `KATHMANDU — In a landmark step toward transparency and technological elevation, a new national payment infrastructure has been officially launched in Nepal.`
     }
   },
   {
     id: "art-102",
-    category: "politics",
-    isBreaking: true,
+    category: "state",
+    isBreaking: false,
     isFeatured: false,
-    views: 980,
+    views: 1120,
     author: "निर्मला श्रेष्ठ / Nirmala Shrestha",
     dateBs: "२०८३ श्रावण २४, शनिबार",
     dateAd: "August 8, 2026",
-    image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800&auto=format&fit=crop",
     title: {
-      np: "संसद्‌मा राष्ट्रिय विकास तथा पूर्वाधार बजेट विधेयक सर्वसम्मत पारित",
-      en: "Parliament Unanimously Passes National Infrastructure Development Bill"
+      np: "सातै प्रदेशमा प्रादेशिक विकास योजना र पूर्वाधार विस्तार तीव्र रूपमा अघि बढ्दै",
+      en: "Provincial Development Plans and Infrastructure Expansion Accelerated Across All 7 Provinces"
     },
     excerpt: {
-      np: "प्रतिनिधिसभाको आजको बैठकले समृद्ध नेपाल निर्माणका लागि महत्वपूर्ण विकास विधेयक पास गरेको छ।",
-      en: "The House of Representatives has unanimously approved the key national development bill today."
+      np: "प्रदेश सरकारहरूले स्थानीय समृद्धि र प्रादेशिक सडक सञ्जाल जोड्ने नयाँ परियोजना सञ्चालनमा ल्याएका छन्।",
+      en: "Provincial governments have launched major regional connectivity and infrastructure development projects."
     },
     content: {
-      np: `काठमाडौँ — प्रतिनिधिसभाको बैठकले राष्ट्रिय पूर्वाधार तथा औद्योगिक प्रवर्धन विधेयक २०८३ सर्वसम्मतले पारित गरेको छ। 
-      
-      सभामुखले निर्णयार्थ पेस गर्नुभएको उक्त विधेयकमाथि सबै राजनीतिक दलका सांसदहरूले सहमति जनाएका हुन्। विधेयक पारित भएसँगै निर्माणाधीन राजमार्ग, जलविद्युत् आयोजना र विमानस्थल निर्माण कार्यले गति लिनेछ।`,
-      en: `KATHMANDU — The House of Representatives has passed the landmark Infrastructure and Industrial Development Bill 2026 with unanimous support from all major parliamentary parties.
-      
-      The bill aims to accelerate national highways, mega hydropower projects, and international airport expansions.`
+      np: `काठमाडौँ — सातै प्रदेश सरकारहरूले प्रादेशिक विकास योजनालाई थप प्रभावकारी बनाउन भौतिक पूर्वाधार र स्वास्थ्य सेवा सुदृढीकरण कार्यक्रम लागू गरेका छन्।`,
+      en: `KATHMANDU — Provincial governments across Nepal have initiated coordinated development agendas to upgrade regional roads and public health facilities.`
     }
   },
   {
     id: "art-103",
+    category: "local",
+    isBreaking: false,
+    isFeatured: false,
+    views: 890,
+    author: "हरि शर्मा / Hari Sharma",
+    dateBs: "२०८३ श्रावण २३, शुक्रबार",
+    dateAd: "August 7, 2026",
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop",
+    title: {
+      np: "स्थानीय तहहरूमा डिजिटल नागरिक सेवा सुदृढ, गाउँ-गाउँमा आधुनिक प्रविधि",
+      en: "Digital Public Services Strengthened Across Local Bodies to Empower Villages"
+    },
+    excerpt: {
+      np: "स्थानीय पालिका तथा वडाहरूबाट अनलाइन प्रणालीमार्फत द्रुत सेवा प्रवाह गर्न नयाँ प्रविधि जडान।",
+      en: "Local municipalities and wards adopt digital e-governance solutions for faster service delivery."
+    },
+    content: {
+      np: `पोखरा — स्थानीय तहमा सेवाग्राहीको चाप नियन्त्रण गर्न र पारदर्शी ढङ्गले काम सम्पन्न गर्न ई-गभर्नेन्स सेवा विस्तार गरिएको छ।`,
+      en: `POKHARA — Municipalities across the region have introduced paperless e-governance systems to enhance citizen convenience.`
+    }
+  },
+  {
+    id: "art-104",
+    category: "politics",
+    isBreaking: true,
+    isFeatured: false,
+    views: 980,
+    author: "रमेश खड्का / Ramesh Khadka",
+    dateBs: "२०८३ श्रावण २४, शनिबार",
+    dateAd: "August 8, 2026",
+    image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=800&auto=format&fit=crop",
+    title: {
+      np: "संसद्‌मा राष्ट्रिय विकास तथा सुशासन विधेयक सर्वसम्मत पारित",
+      en: "Parliament Unanimously Passes National Infrastructure & Governance Development Bill"
+    },
+    excerpt: {
+      np: "प्रतिनिधिसभाको आजको बैठकले समृद्ध नेपाल निर्माणका लागि महत्वपूर्ण विकास विधेयक पास गरेको छ।",
+      en: "The House of Representatives has unanimously approved the key national governance bill today."
+    },
+    content: {
+      np: `काठमाडौँ — प्रतिनिधिसभाको बैठकले राष्ट्रिय पूर्वाधार तथा औद्योगिक प्रवर्धन विधेयक २०८३ सर्वसम्मतले पारित गरेको छ। 
+      
+      सभामुखले निर्णयार्थ पेस गर्नुभएको उक्त विधेयकमाथि सबै राजनीतिक दलका सांसदहरूले सहमति जनाएका हुन्।`,
+      en: `KATHMANDU — The House of Representatives has passed the landmark Infrastructure and Industrial Development Bill 2026 with unanimous support.`
+    }
+  },
+  {
+    id: "art-105",
     category: "economy",
     isBreaking: false,
     isFeatured: false,
@@ -218,24 +259,20 @@ const INITIAL_ARTICLES = [
     dateAd: "August 7, 2026",
     image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop",
     title: {
-      np: "नेपालको सेयर बजार नेप्से परिसूचकमा उछाल, पर्यटन र जलविद्युत् क्षेत्र अग्रस्थानमा",
-      en: "Nepal Stock Exchange (NEPSE) Rallies as Tourism and Hydropower Stocks Soar"
+      np: "नेपालको सेयर बजार नेप्से परिसूचकमा उछाल, व्यापार र उद्योग क्षेत्र अग्रस्थानमा",
+      en: "Nepal Stock Exchange (NEPSE) Rallies as Trade and Hydropower Stocks Soar"
     },
     excerpt: {
       np: "साताको अन्तिम कारोबार दिन नेप्से परिसूचक उच्च अंकले बढेर लगानीकर्ताहरूमा उत्साह छाएको छ।",
       en: "The NEPSE index surged significantly on the closing day of the trading week, driven by strong investor confidence."
     },
     content: {
-      np: `काठमाडौँ — नेपाल स्टक एक्सचेन्ज (नेप्से) परिसूचकमा आज ५५ अंकको वृद्धि भएको छ। 
-      
-      नेपाल राष्ट्र बैंकको सकारात्मक मौद्रिक नीति पुनरावलोकन र बैंकहरूको ब्याजदर घट्दो क्रममा रहेकाले लगानीकर्ताको आकर्षण बढेको विश्लेषण गरिएको छ। विशेष गरी हाइड्रोपावर र बैंकिङ उपसमूहमा उच्च कारोबार भएको छ।`,
-      en: `KATHMANDU — The Nepal Stock Exchange (NEPSE) index jumped 55 points today as investor sentiment turned strongly bullish.
-      
-      Analysts attribute the market rally to favorable monetary policy adjustments by Nepal Rastra Bank and decreasing interest rates across commercial banks.`
+      np: `काठमाडौँ — नेपाल स्टक एक्सचेन्ज (नेप्से) परिसूचकमा आज ५५ अंकको वृद्धि भएको छ।`,
+      en: `KATHMANDU — The Nepal Stock Exchange (NEPSE) index jumped 55 points today as investor sentiment turned strongly bullish.`
     }
   },
   {
-    id: "art-104",
+    id: "art-106",
     category: "sports",
     isBreaking: true,
     isFeatured: false,
@@ -253,16 +290,12 @@ const INITIAL_ARTICLES = [
       en: "With stellar batting and disciplined bowling, Nepal outclassed rival teams to set a historic international record."
     },
     content: {
-      np: `काठमाडौँ — अन्तर्राष्ट्रिय टी-२० शृङ्खलाअन्तर्गत आज भएको सेमिफाइनल खेलमा नेपाली टोलीले सानदार जित हासिल गर्दै फाइनलको यात्रा तय गरेको छ।
-      
-      नेपाली अलराउन्डरको विष्फोटक ब्याटिङ र तीव्र गतिका बलरहरूको धारिलो बलिङसामु विपक्षी टोली धराशयी बनेको थियो। क्रिकेट समर्थकहरूले देशैभर विजय उत्सव मनाएका छन्।`,
-      en: `KATHMANDU — The Nepali Men's Cricket Team sealed a sensational victory in the T20 International Series semifinals today to lock their spot in the grand final.
-      
-      A brilliant all-round display by Nepal's top order and pace bowlers earned high praise from global cricket experts.`
+      np: `काठमाडौँ — अन्तर्राष्ट्रिय टी-२० शृङ्खलाअन्तर्गत आज भएको सेमिफाइनल खेलमा नेपाली टोलीले सानदार जित हासिल गर्दै फाइनलको यात्रा तय गरेको छ।`,
+      en: `KATHMANDU — The Nepali Men's Cricket Team sealed a sensational victory in the T20 International Series semifinals today.`
     }
   },
   {
-    id: "art-105",
+    id: "art-107",
     category: "opinion",
     isBreaking: false,
     isFeatured: false,
@@ -280,12 +313,54 @@ const INITIAL_ARTICLES = [
       en: "An insightful analysis on rapidly melting Himalayan glaciers and urgent sustainable climate policies."
     },
     content: {
-      np: `हाम्रो देश नेपाल विश्वकै अद्वितीय प्राकृतिक सौन्दर्य र सर्वोच्च शिखर सगरमाथाको देश हो। तर पछिल्लो समय जलवायु परिवर्तनका कारण हाम्रा हिमालहरू काला चट्टानमा परिणत हुने खतरा बढेको छ।
-      
-      संसारभरिका विकसित राष्ट्रहरूले उत्सर्जन गर्ने कार्बनको नकारात्मक असर हाम्रा निर्दोष हिमाली बासिन्दाहरूले भोग्नुपरेको छ। अब नेपालले अन्तर्राष्ट्रिय जलवायु शिखर सम्मेलनमा स्पष्ट अडान राख्नुपर्छ।`,
-      en: `Nepal stands at the heart of the world's most majestic mountains. However, climate change poses an existential threat as Himalayan glaciers melt at unprecedented rates.
-      
-      Nepal must spearhead global advocacy at upcoming international climate summits to secure climate compensation and green investments.`
+      np: `हाम्रो देश नेपाल विश्वकै अद्वितीय प्राकृतिक सौन्दर्य र सर्वोच्च शिखर सगरमाथाको देश हो। तर पछिल्लो समय जलवायु परिवर्तनका कारण हाम्रा हिमालहरू काला चट्टानमा परिणत हुने खतरा बढेको छ।`,
+      en: `Nepal stands at the heart of the world's most majestic mountains. However, climate change poses an existential threat as Himalayan glaciers melt.`
+    }
+  },
+  {
+    id: "art-108",
+    category: "video",
+    isBreaking: false,
+    isFeatured: false,
+    views: 1890,
+    author: "अनलाइन पत्रिका भिडियो डेस्क / Video Desk",
+    dateBs: "२०८३ श्रावण २०, मङ्गलबार",
+    dateAd: "August 4, 2026",
+    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop",
+    title: {
+      np: "नेपालका हिमाल, संस्कृति र सम्पदाको विशेष भिडियो डकुमेन्ट्री (विशेष भिडियो)",
+      en: "Exclusive Video Documentary: Exploring Nepal's Majestic Landscapes & Culture"
+    },
+    excerpt: {
+      np: "सगरमाथा क्षेत्र, पोखरा र अन्नपूर्ण सर्किटको मनमोहक दृश्यावलोकन प्रस्तुत गर्ने भिडियो रिर्पोट।",
+      en: "A stunning video report highlighting the breathtaking beauty of Mt. Everest and Annapurna Circuit."
+    },
+    content: {
+      np: `काठमाडौँ — नेपालको अद्वितीय प्राकृतिक दृश्य तथा सांस्कृति सम्पदालाई विश्वसामु चिनाउन निर्माण गरिएको विशेष भिडियो सार्वजनिक गरिएको छ।`,
+      en: `KATHMANDU — A newly produced high-definition video documentary exploring Nepal's natural wonders has been released today.`
+    }
+  },
+  {
+    id: "art-109",
+    category: "photo-gallery",
+    isBreaking: false,
+    isFeatured: false,
+    views: 1530,
+    author: "अनलाइन पत्रिका फोटो ग्यालरी डेस्क / Photo Desk",
+    dateBs: "२०८३ श्रावण १९, सोमबार",
+    dateAd: "August 3, 2026",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop",
+    title: {
+      np: "नेपालका उत्कृष्ट प्राकृतिक सौन्दर्य तथा संस्कृति (विशेष फोटो ग्यालरी)",
+      en: "Visual Splendor: High-Resolution Photo Gallery of Scenic Nepal"
+    },
+    excerpt: {
+      np: "नेपालका प्रसिद्ध पर्यटकीय गन्तव्य, हिमश्रृङ्खला र लोकसंस्कृतिका मनमोहक दृश्य सङ्ग्रह।",
+      en: "A rich photo collection showcasing snow-capped mountains, vibrant festivals, and landscapes."
+    },
+    content: {
+      np: `काठमाडौँ — देशका विभिन्न भूभागका उत्कृष्ट फोटोग्राफरहरूले खिचेका मनमोहक तस्विरहरूको फोटो ग्यालरी सङ्गालो।`,
+      en: `KATHMANDU — Explore an exclusive gallery featuring breathtaking landscape photography from across Nepal.`
     }
   }
 ];

@@ -1,0 +1,83 @@
+@{
+    string lang = ViewBag.CurrentLang ?? "np";
+    bool isNp = lang == "np";
+    ViewData["Title"] = isNp ? "विज्ञापन तथा मिडिया किट" : "Advertise & Media Kit";
+}
+
+<div class="container" style="padding: 40px 0;">
+    <div style="max-width: 960px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 36px;">
+        
+        <h1 style="font-size: 2.2rem; font-weight: 800; border-bottom: 3px solid var(--primary-red); padding-bottom: 12px; margin-bottom: 24px; color: var(--text-primary);">
+            <i class="fas fa-bullhorn" style="color: var(--primary-red);"></i> @(isNp ? "विज्ञापन तथा मिडिया किट (Advertisement & Media Kit)" : "Advertise & Media Kit")
+        </h1>
+
+        <div style="font-size: 1.08rem; line-height: 1.8; color: var(--text-primary);">
+            @if (isNp)
+            {
+                <p>अनलाइन् खबर पत्रिका नेपालको अग्रणी र द्रुत गतिमा बढिरहेको डिजिटल समाचार पोर्टल हो। देश तथा विदेशमा रहेका लाखौँ नेपाली पाठकहरूसम्म आफ्ना उत्पादन र सेवाको प्रवर्धन गर्नका लागि हामी विभिन्न ब्यानर, भिडियो र प्रायोजित सामग्री (Sponsored Content) का अवसरहरू प्रदान गर्दछौं।</p>
+                
+                <h3 style="color: var(--brand-blue); margin-top: 28px;"><i class="fas fa-chart-pie"></i> हाम्रा पाठकहरूको पहुँच र तथ्याङ्क:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
+                    <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; text-align: center;">
+                        <h2 style="color: var(--primary-red); margin: 0; font-size: 2rem;">२५ लाख+</h2>
+                        <small style="color: var(--text-secondary);">मासिक भ्यूज (Monthly Pageviews)</small>
+                    </div>
+                    <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; text-align: center;">
+                        <h2 style="color: var(--brand-blue); margin: 0; font-size: 2rem;">७०%</h2>
+                        <small style="color: var(--text-secondary);">मोबाइल प्रयोगकर्ता (Mobile Traffic)</small>
+                    </div>
+                    <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; text-align: center;">
+                        <h2 style="color: #10B981; margin: 0; font-size: 2rem;">१८-४५</h2>
+                        <small style="color: var(--text-secondary);">मुख्य उमेर समूह (Target Demographics)</small>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--brand-blue); margin-top: 28px;"><i class="fas fa-th-large"></i> विज्ञापन स्थान र साइजहरू (Banner Placements)</h3>
+                <ul style="padding-left: 20px;">
+                    <li><strong>मुख्य हेडर ब्यानर (Header Banner):</strong> 970 x 90 px (डेस्कटप तथा मोबाइल)</li>
+                    <li><strong>ब्रेकिङ खबर ब्यानर (In-Article Top):</strong> 728 x 90 px</li>
+                    <li><strong>साइडबार ब्यानर (Sidebar Square):</strong> 300 x 250 px</li>
+                    <li><strong>प्रायोजित समाचार (Sponsored Article/Native Ad):</strong> विशेष आलेख रिपोर्ट</li>
+                </ul>
+
+                <div style="background: rgba(255, 183, 3, 0.1); border-left: 4px solid #FFB703; padding: 18px; border-radius: 8px; margin-top: 28px;">
+                    <h4 style="margin: 0 0 6px; color: #FFB703;"><i class="fas fa-phone-volume"></i> विज्ञापन सम्पर्क शाखा</h4>
+                    <p style="margin: 0;">विज्ञापन दररेट र विस्तृत मिडिया किटका लागि इमेल गर्नुहोस्: <strong>marketing@onlinepatrika.com.np</strong> वा हटलाइन <strong>+९७७-९८५१२३४५६७</strong> मा सम्पर्क गर्नुहोस्।</p>
+                </div>
+            }
+            else
+            {
+                <p>Online Khabar Patrika offers premium digital advertising spaces for brands, enterprises, and organizations seeking direct engagement with high-intent Nepali audiences across the globe.</p>
+
+                <h3 style="color: var(--brand-blue); margin-top: 28px;"><i class="fas fa-chart-pie"></i> Audience Reach & Analytics</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;">
+                    <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; text-align: center;">
+                        <h2 style="color: var(--primary-red); margin: 0; font-size: 2rem;">2.5M+</h2>
+                        <small style="color: var(--text-secondary);">Monthly Pageviews</small>
+                    </div>
+                    <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; text-align: center;">
+                        <h2 style="color: var(--brand-blue); margin: 0; font-size: 2rem;">70%</h2>
+                        <small style="color: var(--text-secondary);">Mobile Audience</small>
+                    </div>
+                    <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; text-align: center;">
+                        <h2 style="color: #10B981; margin: 0; font-size: 2rem;">18-45</h2>
+                        <small style="color: var(--text-secondary);">Prime Demographics</small>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--brand-blue); margin-top: 28px;"><i class="fas fa-th-large"></i> Ad Placements & Sizes</h3>
+                <ul style="padding-left: 20px;">
+                    <li><strong>Header Banner:</strong> 970 x 90 px</li>
+                    <li><strong>In-Article Leaderboard:</strong> 728 x 90 px</li>
+                    <li><strong>Sidebar Square Widget:</strong> 300 x 250 px</li>
+                    <li><strong>Sponsored Content & Native PR:</strong> Custom article placement</li>
+                </ul>
+
+                <div style="background: rgba(255, 183, 3, 0.1); border-left: 4px solid #FFB703; padding: 18px; border-radius: 8px; margin-top: 28px;">
+                    <h4 style="margin: 0 0 6px; color: #FFB703;"><i class="fas fa-phone-volume"></i> Media Kit & Booking Contact</h4>
+                    <p style="margin: 0;">Email <strong>marketing@onlinepatrika.com.np</strong> or call hotline <strong>+977-9851234567</strong> for rate card requests.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
