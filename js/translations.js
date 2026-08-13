@@ -66,10 +66,10 @@ const TRANSLATIONS = {
     },
 
     footer: {
-      about: "अनलाइन पत्रिका नेपालको आधुनिक, निष्पक्ष र भरपर्दो डिजिटल समाचार माध्यम हो। हामी विश्वासी समाचार, विश्लेषण र विचार सम्प्रेषण गर्दछौं।",
+      about: "अनलाइन् खबर पत्रिका सार्वजनिक हितका लागि समयमै, सत्य-तथ्य र जिम्मेवारपूर्ण समाचार तथा सूचना प्रदान गर्न प्रतिबद्ध एक स्वतन्त्र डिजिटल समाचार तथा मिडिया प्लेटफर्म हो।",
       quickLinks: "महत्वपूर्ण लिङ्कहरू",
       contact: "सम्पर्क",
-      address: "सिक्किम, नेपाल",
+      address: "काठमाडौँ, नेपाल",
       email: "info@onlinepatrika.com.np",
       phone: "+९७७-१-४५६७८९०",
       copyright: "© २०८३ अनलाइन पत्रिका। सर्वअधिकार सुरक्षित।"
@@ -139,10 +139,10 @@ const TRANSLATIONS = {
     },
 
     footer: {
-      about: "Online Patrika is Nepal's modern, impartial, and trusted digital news platform bringing reliable news, analysis, and insights daily.",
+      about: "Online Khabar Patrika is an independent digital news and media platform committed to providing timely, accurate and responsible news and information to the public.",
       quickLinks: "Quick Links",
       contact: "Contact Us",
-      address: "Sikkim, Nepal",
+      address: "Kathmandu, Nepal",
       email: "info@onlinepatrika.com.np",
       phone: "+977-1-4567890",
       copyright: "© 2026 Online Patrika. All rights reserved."
