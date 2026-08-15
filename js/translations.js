@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TRANSLATIONS & INITIAL NEWS DATASTORE (NEPALI & ENGLISH)
+   TRANSLATIONS & INITIAL NEWS DATASTORE (NEPALI & ENGLISH) - SIKKIM, INDIA FOCUS
    ========================================================================== */
 
 const TRANSLATIONS = {
@@ -66,12 +66,12 @@ const TRANSLATIONS = {
     },
 
     footer: {
-      about: "अनलाइन् खबर पत्रिका सार्वजनिक हितका लागि समयमै, सत्य-तथ्य र जिम्मेवारपूर्ण समाचार तथा सूचना प्रदान गर्न प्रतिबद्ध एक स्वतन्त्र डिजिटल समाचार तथा मिडिया प्लेटफर्म हो।",
+      about: "अनलाइन् खबर पत्रिका सिक्किम र भारतको सार्वजनिक हितका लागि समयमै, सत्य-तथ्य र जिम्मेवारपूर्ण समाचार तथा सूचना प्रदान गर्न प्रतिबद्ध एक स्वतन्त्र डिजिटल समाचार मिडिया प्लेटफर्म हो।",
       quickLinks: "महत्वपूर्ण लिङ्कहरू",
       contact: "सम्पर्क",
-      address: "काठमाडौँ, नेपाल",
-      email: "info@onlinepatrika.com.np",
-      phone: "+९७७-१-४५६७८९०",
+      address: "डेभलपमेन्ट एरिया, जीवन थिङ मार्ग, ग्याङटोक - सिक्किम, पिन-७३७१०१",
+      email: "v.neopaney@gmail.com",
+      phone: "+९१-३५९२-२५१२३४",
       copyright: "© २०८३ अनलाइन पत्रिका। सर्वअधिकार सुरक्षित।"
     }
   },
@@ -139,12 +139,12 @@ const TRANSLATIONS = {
     },
 
     footer: {
-      about: "Online Khabar Patrika is an independent digital news and media platform committed to providing timely, accurate and responsible news and information to the public.",
+      about: "Online Khabar Patrika is an independent digital news and media platform committed to providing timely, accurate and responsible news to readers across Sikkim, India and worldwide.",
       quickLinks: "Quick Links",
       contact: "Contact Us",
-      address: "Kathmandu, Nepal",
-      email: "info@onlinepatrika.com.np",
-      phone: "+977-1-4567890",
+      address: "Development Area, Near Nepali Sahitya Parishad, Jeewan Theeng Marg, Gangtok - Sikkim. Pin-737101",
+      email: "v.neopaney@gmail.com",
+      phone: "+91-3592-251234",
       copyright: "© 2026 Online Patrika. All rights reserved."
     }
   }
@@ -163,18 +163,18 @@ const INITIAL_ARTICLES = [
     dateAd: "August 8, 2026",
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop",
     title: {
-      np: "नेपालमा अत्याधुनिक डिजिटल भुक्तानी र राष्ट्रिय पूर्वाधार प्रविधि सञ्चालनमा",
-      en: "Advanced National Digital Payments & Infrastructure Launched in Nepal"
+      np: "सिक्किममा अत्याधुनिक डिजिटल भुक्तानी र राष्ट्रिय पूर्वाधार प्रविधि सञ्चालनमा",
+      en: "Advanced National Digital Payments & Infrastructure Launched in Sikkim"
     },
     excerpt: {
-      np: "नेपाल सरकार र निजी क्षेत्रको सहकार्यमा सुरक्षित राष्ट्रिय डिजिटल संरचना र पूर्वाधारको शुभारम्भ गरिएको छ।",
-      en: "In collaboration with government and private sectors, a secure national digital infra was unveiled today."
+      np: "सिक्किम सरकार र डिजिटल प्रविधि क्षेत्रको सहकार्यमा सुरक्षित राष्ट्रिय पूर्वाधारको शुभारम्भ गरिएको छ।",
+      en: "In collaboration with government and tech sectors, a secure national digital infra was unveiled today in Sikkim."
     },
     content: {
-      np: `सिक्किम — नेपालमा प्रविधि र वित्तीय कारोबारलाई थप पारदर्शी र आधुनिक बनाउन नयाँ राष्ट्रिय डिजिटल भुक्तानी प्रणाली सञ्चालनमा आएको छ। 
+      np: `ग्याङटोक — सिक्किममा प्रविधि र वित्तीय कारोबारलाई थप पारदर्शी र आधुनिक बनाउन नयाँ राष्ट्रिय डिजिटल भुक्तानी प्रणाली सञ्चालनमा आएको छ। 
       
-      आज आयोजित उच्चस्तरीय डिजिटल समिटमा सूचना तथा सञ्चार प्रविधि मन्त्रालयले अत्याधुनिक पूर्वाधार विकासको घोषणा गरेको हो।`,
-      en: `SIKKIM — In a landmark step toward transparency and technological elevation, a new national payment infrastructure has been officially launched in Nepal.`
+      आज आयोजित उच्चस्तरीय डिजिटल समिटमा सूचना प्रविधि विभागले अत्याधुनिक पूर्वाधार विकासको घोषणा गरेको हो।`,
+      en: `GANGTOK — In a landmark step toward transparency and technological elevation, a new digital payment infrastructure has been officially launched in Sikkim, India.`
     }
   },
   {
@@ -188,16 +188,16 @@ const INITIAL_ARTICLES = [
     dateAd: "August 8, 2026",
     image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800&auto=format&fit=crop",
     title: {
-      np: "सातै प्रदेशमा प्रादेशिक विकास योजना र पूर्वाधार विस्तार तीव्र रूपमा अघि बढ्दै",
-      en: "Provincial Development Plans and Infrastructure Expansion Accelerated Across All 7 Provinces"
+      np: "सिक्किमका जिल्लाहरूमा प्रादेशिक विकास योजना र सडक पूर्वाधार विस्तार तीव्र",
+      en: "Regional Infrastructure and Road Network Expansion Accelerated Across Sikkim Districts"
     },
     excerpt: {
-      np: "प्रदेश सरकारहरूले स्थानीय समृद्धि र प्रादेशिक सडक सञ्जाल जोड्ने नयाँ परियोजना सञ्चालनमा ल्याएका छन्।",
-      en: "Provincial governments have launched major regional connectivity and infrastructure development projects."
+      np: "सिक्किम राज्य सरकारले ग्याङटोक, नाम्ची, मङ्गन र गेजिङ जोड्ने नयाँ राजमार्ग परियोजना सञ्चालनमा ल्याएको छ।",
+      en: "Sikkim state government has launched major regional connectivity and Highway development projects."
     },
     content: {
-      np: `सिक्किम — सातै प्रदेश सरकारहरूले प्रादेशिक विकास योजनालाई थप प्रभावकारी बनाउन भौतिक पूर्वाधार र स्वास्थ्य सेवा सुदृढीकरण कार्यक्रम लागू गरेका छन्।`,
-      en: `SIKKIM — Provincial governments across Nepal have initiated coordinated development agendas to upgrade regional roads and public health facilities.`
+      np: `सिक्किम — सिक्किम राज्य सरकारले प्रादेशिक विकास योजनालाई थप प्रभावकारी बनाउन भौतिक पूर्वाधार, पर्यटन र स्वास्थ्य सेवा सुदृढीकरण कार्यक्रम लागू गरेको छ।`,
+      en: `SIKKIM — The state government of Sikkim has initiated coordinated development agendas to upgrade regional roads, eco-tourism, and public health facilities.`
     }
   },
   {
@@ -211,16 +211,16 @@ const INITIAL_ARTICLES = [
     dateAd: "August 7, 2026",
     image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=800&auto=format&fit=crop",
     title: {
-      np: "स्थानीय तहहरूमा डिजिटल नागरिक सेवा सुदृढ, गाउँ-गाउँमा आधुनिक प्रविधि",
-      en: "Digital Public Services Strengthened Across Local Bodies to Empower Villages"
+      np: "स्थानीय निकायहरूमा डिजिटल नागरिक सेवा सुदृढ, गाउँ-गाउँमा आधुनिक ई-गभर्नेन्स",
+      en: "Digital Governance Strengthened Across Sikkim Local Bodies & Panchayats"
     },
     excerpt: {
-      np: "स्थानीय पालिका तथा वडाहरूबाट अनलाइन प्रणालीमार्फत द्रुत सेवा प्रवाह गर्न नयाँ प्रविधि जडान।",
-      en: "Local municipalities and wards adopt digital e-governance solutions for faster service delivery."
+      np: "स्थानीय पञ्चायत तथा नगर निकायहरूबाट अनलाइन प्रणालीमार्फत द्रुत सेवा प्रवाह गर्न नयाँ प्रविधि जडान।",
+      en: "Local panchayats and municipal bodies adopt digital e-governance solutions for faster service delivery."
     },
     content: {
-      np: `पोखरा — स्थानीय तहमा सेवाग्राहीको चाप नियन्त्रण गर्न र पारदर्शी ढङ्गले काम सम्पन्न गर्न ई-गभर्नेन्स सेवा विस्तार गरिएको छ।`,
-      en: `POKHARA — Municipalities across the region have introduced paperless e-governance systems to enhance citizen convenience.`
+      np: `ग्याङटोक — स्थानीय तहमा सेवाग्राहीको चाप नियन्त्रण गर्न र पारदर्शी ढङ्गले काम सम्पन्न गर्न ई-गभर्नेन्स सेवा विस्तार गरिएको छ।`,
+      en: `GANGTOK — Municipalities and panchayats across Sikkim have introduced paperless e-governance systems to enhance citizen convenience.`
     }
   },
   {
@@ -234,18 +234,18 @@ const INITIAL_ARTICLES = [
     dateAd: "August 8, 2026",
     image: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?q=80&w=800&auto=format&fit=crop",
     title: {
-      np: "संसद्‌मा राष्ट्रिय विकास तथा सुशासन विधेयक सर्वसम्मत पारित",
-      en: "Parliament Unanimously Passes National Infrastructure & Governance Development Bill"
+      np: "सिक्किम विधान सभामा हरित विकास तथा औद्योगिक प्रवर्धन विधेयक सर्वसम्मत पारित",
+      en: "Sikkim Legislative Assembly Unanimously Passes Green Development Bill"
     },
     excerpt: {
-      np: "प्रतिनिधिसभाको आजको बैठकले समृद्ध नेपाल निर्माणका लागि महत्वपूर्ण विकास विधेयक पास गरेको छ।",
-      en: "The House of Representatives has unanimously approved the key national governance bill today."
+      np: "विधान सभाको आजको बैठकले राज्यको दीर्घकालीन विकास र हरित उद्योगका लागि महत्वपूर्ण विधेयक पास गरेको छ।",
+      en: "The Sikkim Legislative Assembly has unanimously approved the key green development governance bill today."
     },
     content: {
-      np: `सिक्किम — प्रतिनिधिसभाको बैठकले राष्ट्रिय पूर्वाधार तथा औद्योगिक प्रवर्धन विधेयक २०८३ सर्वसम्मतले पारित गरेको छ। 
+      np: `सिक्किम — सिक्किम विधान सभाको बैठकले राष्ट्रिय हरित पूर्वाधार तथा औद्योगिक प्रवर्धन विधेयक २०८३ सर्वसम्मतले पारित गरेको छ। 
       
-      सभामुखले निर्णयार्थ पेस गर्नुभएको उक्त विधेयकमाथि सबै राजनीतिक दलका सांसदहरूले सहमति जनाएका हुन्।`,
-      en: `SIKKIM — The House of Representatives has passed the landmark Infrastructure and Industrial Development Bill 2026 with unanimous support.`
+      सभामुखले निर्णयार्थ पेस गर्नुभएको उक्त विधेयकमाथि सबै दलका विधायकहरूले सहमति जनाएका हुन्।`,
+      en: `SIKKIM — The Sikkim Legislative Assembly has passed the landmark Sustainable Infrastructure and Green Development Bill 2026 with unanimous support.`
     }
   },
   {
@@ -259,16 +259,16 @@ const INITIAL_ARTICLES = [
     dateAd: "August 7, 2026",
     image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop",
     title: {
-      np: "नेपालको सेयर बजार नेप्से परिसूचकमा उछाल, व्यापार र उद्योग क्षेत्र अग्रस्थानमा",
-      en: "Nepal Stock Exchange (NEPSE) Rallies as Trade and Hydropower Stocks Soar"
+      np: "भारतीय सेयर बजार (BSE/NSE) मा उत्साह, सिक्किमको जैविक उत्पादन र पर्यटन क्षेत्रमा आकर्षण",
+      en: "Indian Markets (BSE/NSE) Rally as Sikkim Organic & Hospitality Sectors Flourish"
     },
     excerpt: {
-      np: "साताको अन्तिम कारोबार दिन नेप्से परिसूचक उच्च अंकले बढेर लगानीकर्ताहरूमा उत्साह छाएको छ।",
-      en: "The NEPSE index surged significantly on the closing day of the trading week, driven by strong investor confidence."
+      np: "साताको कारोबारमा भारतीय बजार परिसूचक उच्च अंकले बढेर लगानीकर्ताहरूमा उत्साह छाएको छ।",
+      en: "The Indian stock market indices surged significantly, driven by strong investor confidence in clean energy and tourism."
     },
     content: {
-      np: `सिक्किम — नेपाल स्टक एक्सचेन्ज (नेप्से) परिसूचकमा आज ५५ अंकको वृद्धि भएको छ।`,
-      en: `SIKKIM — The Nepal Stock Exchange (NEPSE) index jumped 55 points today as investor sentiment turned strongly bullish.`
+      np: `सिक्किम — भारतीय सेयर बजार (BSE Sensex र Nifty) मा आज उच्च वृद्धि भएको छ।`,
+      en: `SIKKIM — Indian stock indices jumped today as investor sentiment turned strongly bullish toward renewable energy, organic agri-business, and Sikkim tourism.`
     }
   },
   {
@@ -282,16 +282,16 @@ const INITIAL_ARTICLES = [
     dateAd: "August 6, 2026",
     image: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=800&auto=format&fit=crop",
     title: {
-      np: "नेपाली क्रिकेट टोली अन्तर्राष्ट्रिय सिरिजको फाइनलमा प्रवेश, विश्व कीर्तिमान कायम",
-      en: "Nepali National Cricket Team Reaches International Series Final with Record-Breaking Win"
+      np: "सिक्किम राज्य क्रिकेट टोली राष्ट्रिय सिरिजको फाइनलमा प्रवेश, सानदार विजय",
+      en: "Sikkim State Cricket Team Reaches National Tournament Final with Brilliant Victory"
     },
     excerpt: {
-      np: "उत्कृष्ट बलिङ र ब्याटिङको मद्दतले नेपालले बलियो प्रतिस्पर्धीलाई पराजित गर्दै कीर्तिमान बनाएको हो।",
-      en: "With stellar batting and disciplined bowling, Nepal outclassed rival teams to set a historic international record."
+      np: "उत्कृष्ट बलिङ र ब्याटिङको मद्दतले सिक्किम टोलीले प्रतिस्पर्धीलाई पराजित गर्दै फाइनल यात्रा तय गरेको हो।",
+      en: "With stellar batting and disciplined bowling, Sikkim Cricket Team outclassed rivals to book a historic final spot."
     },
     content: {
-      np: `सिक्किम — अन्तर्राष्ट्रिय टी-२० शृङ्खलाअन्तर्गत आज भएको सेमिफाइनल खेलमा नेपाली टोलीले सानदार जित हासिल गर्दै फाइनलको यात्रा तय गरेको छ।`,
-      en: `SIKKIM — The Nepali Men's Cricket Team sealed a sensational victory in the T20 International Series semifinals today.`
+      np: `सिक्किम — राष्ट्रिय टी-२० शृङ्खलाअन्तर्गत आज भएको सेमिफाइनल खेलमा सिक्किमको टोलीले सानदार जित हासिल गर्दै फाइनलको यात्रा तय गरेको छ।`,
+      en: `SIKKIM — The Sikkim Cricket Team sealed a sensational victory in the T20 tournament semifinals today to lock their spot in the grand final.`
     }
   },
   {
@@ -305,16 +305,16 @@ const INITIAL_ARTICLES = [
     dateAd: "August 5, 2026",
     image: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop",
     title: {
-      np: "जलवायु परिवर्तन र हिमाल बचाउने अभियान: नेपालले विश्वमञ्चमा नेतृत्व लिनुपर्ने समय",
-      en: "Climate Action & Protecting the Himalayas: Nepal's Global Leadership Moment"
+      np: "जलवायु परिवर्तन र कञ्चनजङ्घा संरक्षण: सिक्किमको वातावरणीय नेतृत्वको मोडल",
+      en: "Climate Action & Protecting Mt. Kanchenjunga: Sikkim's Environmental Leadership"
     },
     excerpt: {
-      np: "हिमाली क्षेत्रमा तीव्र गतिमा पग्लिरहेको हिउँ र यसले पारिरहेको वातावरणीय प्रभावबारे विशेष विश्लेषण।",
-      en: "An insightful analysis on rapidly melting Himalayan glaciers and urgent sustainable climate policies."
+      np: "हिमाली पारिस्थितिक प्रणाली र कञ्चनजङ्घा क्षेत्रमा तीव्र गतिमा भइरहेको जैविक संरक्षणबारे विशेष विश्लेषण।",
+      en: "An insightful analysis on protecting Himalayan ecology, glaciers around Mt. Kanchenjunga, and sustainable green policies."
     },
     content: {
-      np: `हाम्रो देश नेपाल विश्वकै अद्वितीय प्राकृतिक सौन्दर्य र सर्वोच्च शिखर सगरमाथाको देश हो। तर पछिल्लो समय जलवायु परिवर्तनका कारण हाम्रा हिमालहरू काला चट्टानमा परिणत हुने खतरा बढेको छ।`,
-      en: `Nepal stands at the heart of the world's most majestic mountains. However, climate change poses an existential threat as Himalayan glaciers melt.`
+      np: `हाम्रो सिक्किम राज्य अद्वितीय प्राकृतिक सौन्दर्य र कञ्चनजङ्घा हिमश्रृङ्खलाको काखमा अवस्थित छ। वातावरणीय संरक्षण र जैविक खेतीमा सिक्किमले विश्वमञ्चमा नेतृत्वदायी भूमिका निर्वाह गर्दै आएको छ।`,
+      en: `Sikkim stands at the heart of the majestic Mt. Kanchenjunga region. Climate resilience and organic environmental conservation pose vital policy models for the world.`
     }
   },
   {
@@ -328,16 +328,16 @@ const INITIAL_ARTICLES = [
     dateAd: "August 4, 2026",
     image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=800&auto=format&fit=crop",
     title: {
-      np: "नेपालका हिमाल, संस्कृति र सम्पदाको विशेष भिडियो डकुमेन्ट्री (विशेष भिडियो)",
-      en: "Exclusive Video Documentary: Exploring Nepal's Majestic Landscapes & Culture"
+      np: "सिक्किमका हिमाल, गुम्बा र संस्कृतिको विशेष भिडियो डकुमेन्ट्री (विशेष भिडियो)",
+      en: "Exclusive Video Documentary: Exploring Sikkim's Scenic Lakes, Monasteries & Heritage"
     },
     excerpt: {
-      np: "सगरमाथा क्षेत्र, पोखरा र अन्नपूर्ण सर्किटको मनमोहक दृश्यावलोकन प्रस्तुत गर्ने भिडियो रिर्पोट।",
-      en: "A stunning video report highlighting the breathtaking beauty of Mt. Everest and Annapurna Circuit."
+      np: "सोङ्गो ताल, गुरुडोङमार र रुमटेक गुम्बाको मनमोहक दृश्यावलोकन प्रस्तुत गर्ने भिडियो रिर्पोट।",
+      en: "A stunning video report highlighting the breathtaking beauty of Tsomgo Lake, Gurudongmar, and Sikkim's heritage."
     },
     content: {
-      np: `सिक्किम — नेपालको अद्वितीय प्राकृतिक दृश्य तथा सांस्कृति सम्पदालाई विश्वसामु चिनाउन निर्माण गरिएको विशेष भिडियो सार्वजनिक गरिएको छ।`,
-      en: `SIKKIM — A newly produced high-definition video documentary exploring Nepal's natural wonders has been released today.`
+      np: `सिक्किम — सिक्किमको अद्वितीय प्राकृतिक दृश्य तथा सांस्कृतिक सम्पदालाई विश्वसामु चिनाउन निर्माण गरिएको विशेष भिडियो सार्वजनिक गरिएको छ।`,
+      en: `SIKKIM — A newly produced high-definition video documentary exploring Sikkim's natural wonders and cultural heritage has been released today.`
     }
   },
   {
@@ -351,16 +351,16 @@ const INITIAL_ARTICLES = [
     dateAd: "August 3, 2026",
     image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop",
     title: {
-      np: "नेपालका उत्कृष्ट प्राकृतिक सौन्दर्य तथा संस्कृति (विशेष फोटो ग्यालरी)",
-      en: "Visual Splendor: High-Resolution Photo Gallery of Scenic Nepal"
+      np: "सिक्किमका मनमोहक हिमश्रृङ्खला र लोकसंस्कृति (विशेष फोटो ग्यालरी)",
+      en: "Visual Splendor: High-Resolution Photo Gallery of Scenic Sikkim"
     },
     excerpt: {
-      np: "नेपालका प्रसिद्ध पर्यटकीय गन्तव्य, हिमश्रृङ्खला र लोकसंस्कृतिका मनमोहक दृश्य सङ्ग्रह।",
-      en: "A rich photo collection showcasing snow-capped mountains, vibrant festivals, and landscapes."
+      np: "सिक्किमका प्रसिद्ध पर्यटकीय गन्तव्य, कञ्चनजङ्घा दृश्य र चाडपर्वका मनमोहक तस्विर सङ्ग्रह।",
+      en: "A rich photo collection showcasing snow-capped Kanchenjunga peaks, vibrant festivals, and Sikkim landscapes."
     },
     content: {
-      np: `सिक्किम — देशका विभिन्न भूभागका उत्कृष्ट फोटोग्राफरहरूले खिचेका मनमोहक तस्विरहरूको फोटो ग्यालरी सङ्गालो।`,
-      en: `SIKKIM — Explore an exclusive gallery featuring breathtaking landscape photography from across Nepal.`
+      np: `सिक्किम — राज्यका उत्कृष्ट फोटोग्राफरहरूले खिचेका मनमोहक तस्विरहरूको विशेष फोटो ग्यालरी सङ्गालो।`,
+      en: `SIKKIM — Explore an exclusive gallery featuring breathtaking landscape photography from across Sikkim, India.`
     }
   }
 ];

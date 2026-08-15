@@ -26,25 +26,35 @@
                     <i class="fas fa-building"></i> @(isNp ? "केन्द्रीय कार्यालय र डेस्क" : "Central Bureau Contact")
                 </h3>
 
+                <!-- Managing Director Contact Badge -->
+                <div style="display: flex; align-items: center; gap: 16px; background: var(--bg-main); border: 1px solid var(--border-color); padding: 14px; border-radius: 12px; margin-bottom: 20px;">
+                    <img src="~/images/managing-director.jpg" style="width: 54px; height: 62px; object-fit: cover; border-radius: 8px; border: 2px solid var(--primary-red);" alt="Bishnu Neopaney" />
+                    <div>
+                        <div style="font-weight: 800; font-size: 1.05rem; color: var(--text-primary);">@(isNp ? "विष्णु न्यौपाने (Bishnu Neopaney)" : "Bishnu Neopaney")</div>
+                        <div style="color: var(--primary-red); font-size: 0.85rem; font-weight: 700;">@(isNp ? "प्रबन्ध निर्देशक (Managing Director)" : "Managing Director")</div>
+                        <div style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px;"><i class="fas fa-envelope" style="color: var(--primary-red); margin-right: 4px;"></i> v.neopaney@gmail.com</div>
+                    </div>
+                </div>
+
                 <div style="display: flex; flex-direction: column; gap: 16px; font-size: 1.02rem;">
                     <div>
                         <strong style="display: block; color: var(--text-primary);"><i class="fas fa-map-marker-alt" style="color: var(--primary-red); margin-right: 8px;"></i> @(isNp ? "ठेगाना:" : "Address:")</strong>
-                        <span style="color: var(--text-secondary);">अनामनगर, सिक्किम, नेपाल</span>
+                        <span style="color: var(--text-secondary);">@(isNp ? "डेभलपमेन्ट एरिया, नेपाली साहित्य परिषद् नजिक, जीवन थिङ मार्ग, ग्याङटोक - सिक्किम। पिन-७३७१०१" : "Development Area, Near Nepali Sahitya Parishad, Jeewan Theeng Marg, Gangtok - Sikkim. Pin-737101")</span>
                     </div>
 
                     <div>
                         <strong style="display: block; color: var(--text-primary);"><i class="fas fa-phone-alt" style="color: var(--primary-red); margin-right: 8px;"></i> @(isNp ? "फोन / हटलाइन:" : "Phone / Hotline:")</strong>
-                        <span style="color: var(--text-secondary);">+९७७-१-४५६७८९० | +९७७-९८५१२३४५६७</span>
+                        <span style="color: var(--text-secondary);">+९१-३५९२-२५१२३४ | +९१-९८००१२३४५६</span>
                     </div>
 
                     <div>
                         <strong style="display: block; color: var(--text-primary);"><i class="fas fa-envelope" style="color: var(--primary-red); margin-right: 8px;"></i> @(isNp ? "इमेल समाचार डेस्क:" : "Newsroom Email:")</strong>
-                        <span style="color: var(--text-secondary);">news@onlinepatrika.com.np</span>
+                        <span style="color: var(--text-secondary);">v.neopaney@gmail.com</span>
                     </div>
 
                     <div>
                         <strong style="display: block; color: var(--text-primary);"><i class="fas fa-ad" style="color: var(--primary-red); margin-right: 8px;"></i> @(isNp ? "विज्ञापन शाखा:" : "Advertising Bureau:")</strong>
-                        <span style="color: var(--text-secondary);">marketing@onlinepatrika.com.np</span>
+                        <span style="color: var(--text-secondary);">v.neopaney@gmail.com</span>
                     </div>
                 </div>
             </div>

@@ -30,11 +30,11 @@ using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     
-    // Auto-reset database if categories need to be updated to the exact 9 required menus
+    // Auto-reset database if categories/articles need to be updated to Sikkim/India content
     bool needsReset = false;
     try
     {
-        needsReset = !dbContext.Categories.Any() || dbContext.Categories.Count() != 9 || !dbContext.Categories.Any(c => c.Slug == "national");
+        needsReset = !dbContext.Categories.Any() || dbContext.Categories.Count() != 9 || dbContext.Articles.Any(a => a.TitleNp.Contains("नेपालमा") || (a.ContentEn != null && a.ContentEn.Contains("in Nepal")));
     }
     catch
     {
