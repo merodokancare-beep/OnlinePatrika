@@ -71,7 +71,7 @@ const TRANSLATIONS = {
       contact: "सम्पर्क",
       address: "डेभलपमेन्ट एरिया, जीवन थिङ मार्ग, ग्याङटोक - सिक्किम, पिन-७३७१०१",
       email: "v.neopaney@gmail.com",
-      phone: "+९१-३५९२-२५१२३४",
+      phone: "+९१-९८८३७०२८०७",
       copyright: "© २०८३ अनलाइन पत्रिका। सर्वअधिकार सुरक्षित।"
     }
   },
@@ -144,7 +144,7 @@ const TRANSLATIONS = {
       contact: "Contact Us",
       address: "Development Area, Near Nepali Sahitya Parishad, Jeewan Theeng Marg, Gangtok - Sikkim. Pin-737101",
       email: "v.neopaney@gmail.com",
-      phone: "+91-3592-251234",
+      phone: "+91-9883702807",
       copyright: "© 2026 Online Patrika. All rights reserved."
     }
   }
