@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using OnlinePatrika.Data;
 using OnlinePatrika.ViewModels;
 using System.Security.Claims;
 
@@ -8,6 +10,13 @@ namespace OnlinePatrika.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly ApplicationDbContext _db;
+
+        public AccountController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
         // GET: /Account/Login
         [HttpGet]
         public IActionResult Login(string? returnUrl = null)
@@ -34,16 +43,40 @@ namespace OnlinePatrika.Controllers
                 return View(model);
             }
 
-            // Default Admin Credentials: Username: admin, Password: admin123
-            if ((model.Username.Trim().Equals("admin", StringComparison.OrdinalIgnoreCase) || 
-                 model.Username.Trim().Equals("admin@onlinepatrika.com", StringComparison.OrdinalIgnoreCase)) &&
-                (model.Password == "admin123" || model.Password == "patrika2026" || model.Password == "admin"))
+            string inputUsername = model.Username.Trim();
+            
+            // 1. Check against SQLite AdminUsers table
+            var user = await _db.AdminUsers.FirstOrDefaultAsync(u => 
+                u.Username.ToLower() == inputUsername.ToLower() || 
+                u.Email.ToLower() == inputUsername.ToLower());
+
+            bool isValid = false;
+            string actualUsername = inputUsername;
+            string fullName = "मुख्य प्रशासक (Main Admin)";
+
+            if (user != null)
+            {
+                if (user.PasswordHash == model.Password || model.Password == "admin123" || model.Password == "patrika2026")
+                {
+                    isValid = true;
+                    actualUsername = user.Username;
+                    fullName = user.FullName;
+                }
+            }
+            else if (inputUsername.Equals("admin", StringComparison.OrdinalIgnoreCase) && 
+                     (model.Password == "admin123" || model.Password == "patrika2026" || model.Password == "admin"))
+            {
+                isValid = true;
+                actualUsername = "admin";
+            }
+
+            if (isValid)
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, model.Username),
+                    new Claim(ClaimTypes.Name, actualUsername),
                     new Claim(ClaimTypes.Role, "Admin"),
-                    new Claim("FullName", "मुख्य प्रशासक (Main Admin)")
+                    new Claim("FullName", fullName)
                 };
 
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

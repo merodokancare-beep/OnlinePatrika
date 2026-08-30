@@ -9,22 +9,34 @@ namespace OnlinePatrika.Data
 
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Article> Articles { get; set; } = null!;
+        public DbSet<AdminUser> AdminUsers { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            // Seed Admin User
+            modelBuilder.Entity<AdminUser>().HasData(
+                new AdminUser
+                {
+                    Id = 1,
+                    Username = "admin",
+                    PasswordHash = "admin123",
+                    FullName = "मुख्य प्रशासक (Main Admin)",
+                    Email = "admin@onlinepatrika.in",
+                    UpdatedAt = new DateTime(2026, 8, 8)
+                }
+            );
+
             // Seed Categories matching required website menus
             modelBuilder.Entity<Category>().HasData(
                 new Category { Id = 1, NameNp = "राष्ट्रिय", NameEn = "National", Slug = "national", DisplayOrder = 1 },
                 new Category { Id = 2, NameNp = "राज्य", NameEn = "State", Slug = "state", DisplayOrder = 2 },
-                new Category { Id = 3, NameNp = "स्थानीय", NameEn = "Local", Slug = "local", DisplayOrder = 3 },
-                new Category { Id = 4, NameNp = "राजनीति", NameEn = "Politics", Slug = "politics", DisplayOrder = 4 },
-                new Category { Id = 5, NameNp = "अर्थ/व्यापार", NameEn = "Economy / Business", Slug = "economy", DisplayOrder = 5 },
-                new Category { Id = 6, NameNp = "खेलकुद", NameEn = "Sports", Slug = "sports", DisplayOrder = 6 },
-                new Category { Id = 7, NameNp = "विचार", NameEn = "Opinion", Slug = "opinion", DisplayOrder = 7 },
-                new Category { Id = 8, NameNp = "भिडियो", NameEn = "Video", Slug = "video", DisplayOrder = 8 },
-                new Category { Id = 9, NameNp = "फोटो ग्यालरी", NameEn = "Photo Gallery", Slug = "photo-gallery", DisplayOrder = 9 }
+                new Category { Id = 3, NameNp = "अर्थ/व्यापार", NameEn = "Economy / Business", Slug = "economy", DisplayOrder = 3 },
+                new Category { Id = 4, NameNp = "खेलकुद", NameEn = "Sports", Slug = "sports", DisplayOrder = 4 },
+                new Category { Id = 5, NameNp = "विचार", NameEn = "Opinion", Slug = "opinion", DisplayOrder = 5 },
+                new Category { Id = 6, NameNp = "भिडियो", NameEn = "Video", Slug = "video", DisplayOrder = 6 },
+                new Category { Id = 7, NameNp = "फोटो ग्यालरी", NameEn = "Photo Gallery", Slug = "photo-gallery", DisplayOrder = 7 }
             );
 
             // Seed Sample Dual-Language Articles per Menu Category
@@ -70,7 +82,7 @@ namespace OnlinePatrika.Data
                 new Article
                 {
                     Id = 3,
-                    CategoryId = 3, // Local
+                    CategoryId = 2, // State
                     TitleNp = "स्थानीय निकायहरूमा डिजिटल नागरिक सेवा सुदृढ, गाउँ-गाउँमा आधुनिक ई-गभर्नेन्स",
                     TitleEn = "Digital Governance Strengthened Across Sikkim Local Bodies & Panchayats",
                     ExcerptNp = "स्थानीय पञ्चायत तथा नगर निकायहरूबाट अनलाइन प्रणालीमार्फत द्रुत सेवा प्रवाह गर्न नयाँ प्रविधि जडान।",
@@ -89,7 +101,7 @@ namespace OnlinePatrika.Data
                 new Article
                 {
                     Id = 4,
-                    CategoryId = 4, // Politics
+                    CategoryId = 2, // State
                     TitleNp = "सिक्किम विधान सभामा हरित विकास तथा औद्योगिक प्रवर्धन विधेयक सर्वसम्मत पारित",
                     TitleEn = "Sikkim Legislative Assembly Unanimously Passes Green Development Bill",
                     ExcerptNp = "विधान सभाको आजको बैठकले राज्यको दीर्घकालीन विकास र हरित उद्योगका लागि महत्वपूर्ण विधेयक पास गरेको छ।",
@@ -108,7 +120,7 @@ namespace OnlinePatrika.Data
                 new Article
                 {
                     Id = 5,
-                    CategoryId = 5, // Economy / Business
+                    CategoryId = 3, // Economy / Business
                     TitleNp = "भारतीय सेयर बजार (BSE/NSE) मा उत्साह, सिक्किमको जैविक उत्पादन र पर्यटन क्षेत्रमा आकर्षण",
                     TitleEn = "Indian Markets (BSE/NSE) Rally as Sikkim Organic & Hospitality Sectors Flourish",
                     ExcerptNp = "साताको कारोबारमा भारतीय बजार परिसूचक उच्च अंकले बढेर लगानीकर्ताहरूमा उत्साह छाएको छ।",
@@ -127,7 +139,7 @@ namespace OnlinePatrika.Data
                 new Article
                 {
                     Id = 6,
-                    CategoryId = 6, // Sports
+                    CategoryId = 4, // Sports
                     TitleNp = "सिक्किम राज्य क्रिकेट टोली राष्ट्रिय सिरिजको फाइनलमा प्रवेश, सानदार विजय",
                     TitleEn = "Sikkim State Cricket Team Reaches National Tournament Final with Brilliant Victory",
                     ExcerptNp = "उत्कृष्ट बलिङ र ब्याटिङको मद्दतले सिक्किम टोलीले प्रतिस्पर्धीलाई पराजित गर्दै फाइनल यात्रा तय गरेको हो।",
@@ -146,7 +158,7 @@ namespace OnlinePatrika.Data
                 new Article
                 {
                     Id = 7,
-                    CategoryId = 7, // Opinion
+                    CategoryId = 5, // Opinion
                     TitleNp = "जलवायु परिवर्तन र कञ्चनजङ्घा संरक्षण: सिक्किमको वातावरणीय नेतृत्वको मोडल",
                     TitleEn = "Climate Action & Protecting Mt. Kanchenjunga: Sikkim's Environmental Leadership",
                     ExcerptNp = "हिमाली पारिस्थितिक प्रणाली र कञ्चनजङ्घा क्षेत्रमा तीव्र गतिमा भइरहेको जैविक संरक्षणबारे विशेष विश्लेषण।",
@@ -165,7 +177,7 @@ namespace OnlinePatrika.Data
                 new Article
                 {
                     Id = 8,
-                    CategoryId = 8, // Video
+                    CategoryId = 6, // Video
                     TitleNp = "सिक्किमका हिमाल, गुम्बा र संस्कृतिको विशेष भिडियो डकुमेन्ट्री (विशेष भिडियो)",
                     TitleEn = "Exclusive Video Documentary: Exploring Sikkim's Scenic Lakes, Monasteries & Heritage",
                     ExcerptNp = "सोङ्गो ताल, गुरुडोङमार र रुमटेक गुम्बाको मनमोहक दृश्यावलोकन प्रस्तुत गर्ने भिडियो रिर्पोट।",
@@ -184,7 +196,7 @@ namespace OnlinePatrika.Data
                 new Article
                 {
                     Id = 9,
-                    CategoryId = 9, // Photo Gallery
+                    CategoryId = 7, // Photo Gallery
                     TitleNp = "सिक्किमका मनमोहक हिमश्रृङ्खला र लोकसंस्कृति (विशेष फोटो ग्यालरी)",
                     TitleEn = "Visual Splendor: High-Resolution Photo Gallery of Scenic Sikkim",
                     ExcerptNp = "सिक्किमका प्रसिद्ध पर्यटकीय गन्तव्य, कञ्चनजङ्घा दृश्य र चाडपर्वका मनमोहक तस्विर सङ्ग्रह।",

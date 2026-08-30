@@ -34,7 +34,7 @@ using (var scope = app.Services.CreateScope())
     bool needsReset = false;
     try
     {
-        needsReset = !dbContext.Categories.Any() || dbContext.Categories.Count() != 9 || dbContext.Articles.Any(a => a.TitleNp.Contains("नेपालमा") || (a.ContentEn != null && a.ContentEn.Contains("in Nepal")));
+        needsReset = !dbContext.Categories.Any() || dbContext.Categories.Count() != 7 || dbContext.Articles.Any(a => a.TitleNp.Contains("नेपालमा") || (a.ContentEn != null && a.ContentEn.Contains("in Nepal")));
     }
     catch
     {
@@ -46,6 +46,20 @@ using (var scope = app.Services.CreateScope())
         dbContext.Database.EnsureDeleted();
     }
     dbContext.Database.EnsureCreated();
+
+    // Ensure default AdminUser exists
+    if (!dbContext.AdminUsers.Any())
+    {
+        dbContext.AdminUsers.Add(new AdminUser
+        {
+            Username = "admin",
+            PasswordHash = "admin123",
+            FullName = "मुख्य प्रशासक (Main Admin)",
+            Email = "admin@onlinepatrika.in",
+            UpdatedAt = DateTime.UtcNow
+        });
+        dbContext.SaveChanges();
+    }
 }
 
 // Configure the HTTP request pipeline.

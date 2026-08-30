@@ -59,6 +59,8 @@ namespace OnlinePatrika.ViewModels
 
         public List<Article> Articles { get; set; } = new List<Article>();
         public ArticleUploadViewModel UploadModel { get; set; } = new ArticleUploadViewModel();
+        public ChangeCredentialsViewModel ChangeCredentialsModel { get; set; } = new ChangeCredentialsViewModel();
+        public string CurrentAdminUsername { get; set; } = "admin";
         public string CurrentLang { get; set; } = "np";
     }
 }

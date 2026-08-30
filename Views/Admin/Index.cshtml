@@ -6,6 +6,14 @@
 
 <div class="container" style="padding: 28px 0;">
     
+    <!-- Error Alert Message -->
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div style="background: rgba(239, 35, 60, 0.15); border-left: 4px solid #EF233C; color: #FF6B6B; padding: 14px 20px; border-radius: 8px; margin-bottom: 24px; font-weight: 600;">
+            <i class="fas fa-exclamation-triangle"></i> @TempData["ErrorMessage"]
+        </div>
+    }
+
     <!-- Success Alert Message -->
     @if (TempData["SuccessMessage"] != null)
     {
@@ -24,9 +32,12 @@
                 @(isNp ? "सामग्री अपलोड गर्नुहोस् (SQLite Persistence + ASP.NET Core 8.0 MVC)" : "Upload stories directly into SQLite Database via C# MVC")
             </p>
         </div>
-        <div style="display: flex; gap: 10px; align-items: center;">
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <a href="#securitySettings" class="btn-primary" style="background: rgba(217, 4, 41, 0.2); border: 1px solid rgba(217, 4, 41, 0.4); color: white;">
+                <i class="fas fa-key" style="color: #FFB703;"></i> <span>@(isNp ? "पासवर्ड र सुरक्षा सेटिङ" : "Change Password & User")</span>
+            </a>
             <a asp-controller="Home" asp-action="Index" class="btn-primary" style="background: var(--bg-card); border: 1px solid var(--border-color); color: white;">
-                <i class="fas fa-globe"></i> <span>@(isNp ? "सार्वजनिक समाचार पोर्टल हेर्नुहोस्" : "View Public Site")</span>
+                <i class="fas fa-globe"></i> <span>@(isNp ? "सार्वजनिक समाचार पोर्टल" : "Public Site")</span>
             </a>
             <form asp-controller="Account" asp-action="Logout" method="post" style="display: inline;">
                 @Html.AntiForgeryToken()
@@ -150,19 +161,19 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
                 <div>
                     <label style="font-weight: 600; display: block; margin-bottom: 6px;">
-                        <i class="fas fa-image"></i> फोटो URL वा कम्प्युटरबाट फाइल छान्नुहोस्
+                        <i class="fas fa-image"></i> @(isNp ? "फोटो URL वा कम्प्युटरबाट फाइल छान्नुहोस्" : "Featured Image URL or Upload File")
                     </label>
-                    <input asp-for="UploadModel.ImageUrl" class="form-control" placeholder="https://images.unsplash.com/..." style="margin-bottom: 8px;" />
+                    <input asp-for="UploadModel.ImageUrl" class="form-control" placeholder="@(isNp ? "https://images.unsplash.com/..." : "https://images.unsplash.com/...")" style="margin-bottom: 8px;" />
                     <input asp-for="UploadModel.ImageFile" type="file" class="form-control" accept="image/*" />
                 </div>
                 <div>
-                    <label style="font-weight: 600; display: block; margin-bottom: 6px;">संवाददाताको नाम (Author Name)</label>
-                    <input asp-for="UploadModel.Author" class="form-control" value="विशेष संवाददाता / Special Reporter" />
+                    <label style="font-weight: 600; display: block; margin-bottom: 6px;">@(isNp ? "संवाददाताको नाम (Author Name)" : "Author / Reporter Name")</label>
+                    <input asp-for="UploadModel.Author" class="form-control" value="@(isNp ? "विशेष संवाददाता / Special Reporter" : "Special Correspondent")" />
                 </div>
             </div>
 
             <!-- Toggles -->
-            <div style="display: flex; gap: 24px; margin-bottom: 24px;">
+            <div style="display: flex; gap: 24px; margin-bottom: 24px; flex-wrap: wrap;">
                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
                     <input asp-for="UploadModel.IsBreaking" type="checkbox" style="width: 18px; height: 18px;" />
                     <span>@(isNp ? "ताजा खबर (Breaking News) मा देखाउनुहोस्" : "Show in Breaking News Ticker")</span>
@@ -175,7 +186,7 @@
             </div>
 
             <button type="submit" class="btn-primary" style="font-size: 1.05rem; padding: 14px 32px;">
-                <i class="fas fa-paper-plane"></i> @(isNp ? "SQLite डाटाबेसमा समाचार प्रकाशित गर्नुहोस्" : "Publish Article to SQLite Database")
+                <i class="fas fa-paper-plane"></i> @(isNp ? "समाचार प्रकाशित गर्नुहोस्" : "Publish Article to Database")
             </button>
         </form>
     </div>
@@ -184,7 +195,7 @@
     <div class="admin-card">
         <h2 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
             <i class="fas fa-list-alt" style="color: var(--primary-red);"></i>
-            @(isNp ? "सबै प्रकाशित समाचार सूची (SQLite Managed Stories)" : "Managed Articles in SQLite Database")
+            @(isNp ? "सबै प्रकाशित समाचार सूची" : "All Published News Stories")
         </h2>
 
         <div class="table-responsive">
@@ -192,12 +203,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>फोटो</th>
-                        <th>शीर्षक र लेखक</th>
-                        <th>विधा (Menu Category)</th>
-                        <th>प्रकार</th>
-                        <th>भ्यूज</th>
-                        <th>कार्यहरू</th>
+                        <th>@(isNp ? "फोटो" : "Photo")</th>
+                        <th>@(isNp ? "शीर्षक र लेखक" : "Title & Author")</th>
+                        <th>@(isNp ? "विधा" : "Category")</th>
+                        <th>@(isNp ? "प्रकार" : "Type")</th>
+                        <th>@(isNp ? "भ्यूज" : "Views")</th>
+                        <th>@(isNp ? "कार्यहरू" : "Actions")</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -208,7 +219,7 @@
                             <td><img src="@art.ImageUrl" style="width: 48px; height: 36px; object-fit: cover; border-radius: 4px;" alt="Img" /></td>
                             <td>
                                 <div style="font-weight: 700; max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                                    @(isNp ? art.TitleNp : art.TitleEn)
+                                    @(isNp ? art.TitleNp : (string.IsNullOrEmpty(art.TitleEn) ? art.TitleNp : art.TitleEn))
                                 </div>
                                 <small style="color: var(--text-muted);">@art.Author</small>
                             </td>
@@ -220,23 +231,23 @@
                             <td>
                                 @if (art.IsBreaking)
                                 {
-                                    <span style="background: rgba(239, 35, 60, 0.15); color: #EF233C; padding: 3px 8px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700;">ताजा खबर (Breaking)</span>
+                                    <span style="background: rgba(239, 35, 60, 0.15); color: #EF233C; padding: 3px 8px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700;">@(isNp ? "ताजा खबर" : "Breaking")</span>
                                 }
                                 else
                                 {
-                                    <span style="color: var(--text-muted); font-size: 0.85rem;">सामान्य</span>
+                                    <span style="color: var(--text-muted); font-size: 0.85rem;">@(isNp ? "सामान्य" : "Standard")</span>
                                 }
                             </td>
                             <td><i class="far fa-eye"></i> @art.ViewsCount</td>
                             <td>
                                 <div style="display: flex; gap: 8px;">
                                     <form asp-controller="Admin" asp-action="ToggleBreaking" asp-route-id="@art.Id" method="post" style="display:inline;">
-                                        <button type="submit" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: white; width: 32px; height: 32px; border-radius: 4px; cursor: pointer;">
+                                        <button type="submit" title="@(isNp ? "ताजा खबर टगल गर्नुहोस्" : "Toggle Breaking News")" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: white; width: 32px; height: 32px; border-radius: 4px; cursor: pointer;">
                                             <i class="fas fa-bolt" style="color: @(art.IsBreaking ? "var(--primary-red)" : "var(--text-muted)");"></i>
                                         </button>
                                     </form>
-                                    <form asp-controller="Admin" asp-action="Delete" asp-route-id="@art.Id" method="post" style="display:inline;" onsubmit="return confirm('के तपाईं यो समाचार हटाउन निश्चित हुनुहुन्छ?');">
-                                        <button type="submit" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #EF233C; width: 32px; height: 32px; border-radius: 4px; cursor: pointer;">
+                                    <form asp-controller="Admin" asp-action="Delete" asp-route-id="@art.Id" method="post" style="display:inline;" onsubmit="return confirm('@(isNp ? "के तपाईं यो समाचार हटाउन निश्चित हुनुहुन्छ?" : "Are you sure you want to delete this article?")');">
+                                        <button type="submit" title="@(isNp ? "हटाउनुहोस्" : "Delete Article")" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #EF233C; width: 32px; height: 32px; border-radius: 4px; cursor: pointer;">
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
                                     </form>
@@ -249,4 +260,122 @@
         </div>
     </div>
 
+    <!-- Security & Account Settings (Change Username and Password) -->
+    <div class="admin-card" id="securitySettings" style="margin-top: 32px; border: 1px solid rgba(217, 4, 41, 0.3); background: rgba(15, 23, 42, 0.6); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: rgba(217, 4, 41, 0.15); filter: blur(40px); border-radius: 50%; pointer-events: none;"></div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 14px; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #D90429, #800020); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; box-shadow: 0 4px 12px rgba(217, 4, 41, 0.3);">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div>
+                    <h2 style="font-size: 1.3rem; font-weight: 700; margin: 0; color: #FFF;">
+                        @(isNp ? "प्रशासक खाता तथा सुरक्षा सेटिङ" : "Admin Account & Security Settings")
+                    </h2>
+                    <small style="color: var(--text-secondary);">
+                        @(isNp ? "ड्यासबोर्ड लगइन प्रयोगकर्ता नाम र पासवर्ड यहाँबाट परिवर्तन गर्नुहोस्" : "Update login username and password for admin dashboard access")
+                    </small>
+                </div>
+            </div>
+            <div>
+                <span style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); padding: 6px 14px; border-radius: 9999px; font-size: 0.85rem; color: #CBD5E1;">
+                    <i class="fas fa-user-circle" style="color: var(--primary-red); margin-right: 6px;"></i>
+                    @(isNp ? "हालको प्रयोगकर्ता:" : "Current User:") <strong style="color: #FFF;">@Model.CurrentAdminUsername</strong>
+                </span>
+            </div>
+        </div>
+
+        <form asp-controller="Admin" asp-action="ChangeCredentials" method="post">
+            @Html.AntiForgeryToken()
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 24px;">
+                
+                <!-- Left Column: Username & Current Password -->
+                <div style="background: rgba(30, 41, 59, 0.5); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);">
+                    <h3 style="font-size: 1rem; font-weight: 700; color: #E2E8F0; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-id-badge" style="color: var(--brand-blue);"></i> @(isNp ? "प्रयोगकर्ता नाम परिमार्जन" : "Change Username")
+                    </h3>
+
+                    <div style="margin-bottom: 18px;">
+                        <label style="font-size: 0.88rem; font-weight: 600; color: #CBD5E1; display: block; margin-bottom: 8px;">
+                            @(isNp ? "नयाँ प्रयोगकर्ता नाम *" : "New Username *")
+                        </label>
+                        <input asp-for="ChangeCredentialsModel.NewUsername" class="form-control" placeholder="@(isNp ? "उदा: admin_news" : "Ex: admin_news")" required style="width: 100%;" />
+                        <span asp-validation-for="ChangeCredentialsModel.NewUsername" style="color: #FF6B6B; font-size: 0.8rem; margin-top: 4px; display: block;"></span>
+                    </div>
+
+                    <div style="margin-bottom: 8px;">
+                        <label style="font-size: 0.88rem; font-weight: 600; color: #CBD5E1; display: block; margin-bottom: 8px;">
+                            @(isNp ? "हालको पासवर्ड *" : "Current Password *")
+                        </label>
+                        <div style="position: relative;">
+                            <input asp-for="ChangeCredentialsModel.CurrentPassword" type="password" id="curPassInput" class="form-control" placeholder="••••••••" required style="width: 100%; padding-right: 40px;" />
+                            <button type="button" onclick="togglePass('curPassInput', 'curPassIcon')" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94A3B8; cursor: pointer;">
+                                <i class="fas fa-eye" id="curPassIcon"></i>
+                            </button>
+                        </div>
+                        <span asp-validation-for="ChangeCredentialsModel.CurrentPassword" style="color: #FF6B6B; font-size: 0.8rem; margin-top: 4px; display: block;"></span>
+                    </div>
+                </div>
+
+                <!-- Right Column: New Password & Confirmation -->
+                <div style="background: rgba(30, 41, 59, 0.5); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);">
+                    <h3 style="font-size: 1rem; font-weight: 700; color: #E2E8F0; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-lock" style="color: var(--primary-red);"></i> @(isNp ? "नयाँ पासवर्ड सेटिङ" : "Change Password")
+                    </h3>
+
+                    <div style="margin-bottom: 18px;">
+                        <label style="font-size: 0.88rem; font-weight: 600; color: #CBD5E1; display: block; margin-bottom: 8px;">
+                            @(isNp ? "नयाँ पासवर्ड *" : "New Password *")
+                        </label>
+                        <div style="position: relative;">
+                            <input asp-for="ChangeCredentialsModel.NewPassword" type="password" id="newPassInput" class="form-control" placeholder="@(isNp ? "कम्तीमा ४ अक्षरको नयाँ पासवर्ड" : "At least 4 characters")" required style="width: 100%; padding-right: 40px;" />
+                            <button type="button" onclick="togglePass('newPassInput', 'newPassIcon')" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94A3B8; cursor: pointer;">
+                                <i class="fas fa-eye" id="newPassIcon"></i>
+                            </button>
+                        </div>
+                        <span asp-validation-for="ChangeCredentialsModel.NewPassword" style="color: #FF6B6B; font-size: 0.8rem; margin-top: 4px; display: block;"></span>
+                    </div>
+
+                    <div style="margin-bottom: 8px;">
+                        <label style="font-size: 0.88rem; font-weight: 600; color: #CBD5E1; display: block; margin-bottom: 8px;">
+                            @(isNp ? "नयाँ पासवर्ड पुष्टि गर्नुहोस् *" : "Confirm New Password *")
+                        </label>
+                        <div style="position: relative;">
+                            <input asp-for="ChangeCredentialsModel.ConfirmPassword" type="password" id="confirmPassInput" class="form-control" placeholder="@(isNp ? "नयाँ पासवर्ड पुनः प्रविष्ट गर्नुहोस्" : "Re-enter new password")" required style="width: 100%; padding-right: 40px;" />
+                            <button type="button" onclick="togglePass('confirmPassInput', 'confirmPassIcon')" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94A3B8; cursor: pointer;">
+                                <i class="fas fa-eye" id="confirmPassIcon"></i>
+                            </button>
+                        </div>
+                        <span asp-validation-for="ChangeCredentialsModel.ConfirmPassword" style="color: #FF6B6B; font-size: 0.8rem; margin-top: 4px; display: block;"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="display: flex; justify-content: flex-end;">
+                <button type="submit" class="btn-primary" style="padding: 12px 28px; font-size: 0.98rem; font-weight: 700; background: linear-gradient(135deg, #D90429, #EF233C); border: none; border-radius: 8px; color: white; cursor: pointer; box-shadow: 0 4px 14px rgba(217, 4, 41, 0.35); display: inline-flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-save"></i> @(isNp ? "प्रयोगकर्ता नाम र पासवर्ड अद्यावधिक गर्नुहोस्" : "Update Username & Password")
+                </button>
+            </div>
+        </form>
+    </div>
+
 </div>
+
+<script>
+    function togglePass(inputId, iconId) {
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+</script>
