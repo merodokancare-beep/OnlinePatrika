@@ -35,7 +35,7 @@
             <div class="top-bar-left">
                 <div class="date-badge">
                     <i class="far fa-calendar-alt" style="color: var(--primary-red);"></i>
-                    <span>@(isNepali ? "वि.सं. २०८३ श्रावण २४, शनिबार" : "August 8, 2026, Saturday")</span>
+                    <span>@NepaliDateHelper.GetCurrentDateString(isNepali)</span>
                 </div>
                 <div><i class="fas fa-sun" style="color:#FFB703;"></i> सिक्किम २५°C</div>
             </div>
@@ -180,7 +180,7 @@
 
             <div style="border-top: 1px solid var(--border-color); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.86rem; color: var(--text-muted);">
                 <div>
-                    © २०८३ अनलाइन् खबर पत्रिका। सर्वअधिकार सुरक्षित। (Google News JSON-LD SEO + ASP.NET Core 8.0)
+                    @(isNepali ? "© २०८३ अनलाइन् खबर पत्रिका। सर्वअधिकार सुरक्षित।" : "© 2026 Online Khabar Patrika. All rights reserved.")
                 </div>
                 <div>
                     <a asp-controller="Account" asp-action="Login" style="color: var(--primary-red); text-decoration: none; font-weight: 600;">

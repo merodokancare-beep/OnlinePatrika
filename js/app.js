@@ -15,18 +15,47 @@ function getBikramSambatDate() {
   const daysEn = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const monthsNp = ["बैशाख", "जेठ", "असार", "श्रावण", "भदौ", "असोज", "कार्तिक", "मंसिर", "पुष", "माघ", "फागुन", "चैत"];
   
-  // Approximate BS conversion for demonstration (Offset +56 years, +8 months approx)
+  const nepaliDigits = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
+  const toNpNum = (n) => String(n).split('').map(d => nepaliDigits[d] || d).join('');
+
+  const bsMonthDays = {
+    2080: [31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 30],
+    2081: [31, 31, 32, 32, 31, 30, 30, 30, 29, 30, 30, 30],
+    2082: [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 30, 30],
+    2083: [31, 31, 32, 31, 31, 30, 30, 30, 29, 30, 30, 30],
+    2084: [31, 31, 32, 31, 31, 30, 30, 30, 29, 30, 30, 30],
+    2085: [31, 32, 31, 32, 30, 31, 30, 30, 29, 30, 30, 30],
+    2086: [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 30, 30]
+  };
+
+  const refAd = new Date(2023, 3, 14); // 2023-04-14 = 2080-01-01 BS
+  let totalDays = Math.floor((adDate - refAd) / (1000 * 60 * 60 * 24));
+  let bsYear = 2080;
+  let bsMonth = 1;
+  let bsDay = 1;
+
+  while (totalDays > 0 && bsMonthDays[bsYear]) {
+    const daysInMonth = bsMonthDays[bsYear][bsMonth - 1];
+    if (totalDays >= daysInMonth) {
+      totalDays -= daysInMonth;
+      bsMonth++;
+      if (bsMonth > 12) {
+        bsMonth = 1;
+        bsYear++;
+      }
+    } else {
+      bsDay += totalDays;
+      totalDays = 0;
+    }
+  }
+
   const dayNameNp = daysNp[adDate.getDay()];
   const dayNameEn = daysEn[adDate.getDay()];
-  
-  const bsYearNp = "२०८३";
-  const bsMonthNp = monthsNp[3]; // श्रावण
-  const bsDayNp = "२४";
-
+  const monthNameNp = monthsNp[bsMonth - 1] || "";
   const adFormattedEn = adDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 
   return {
-    np: `वि.सं. ${bsYearNp} ${bsMonthNp} ${bsDayNp}, ${dayNameNp}`,
+    np: `वि.सं. ${toNpNum(bsYear)} ${monthNameNp} ${toNpNum(bsDay)}, ${dayNameNp}`,
     en: `${adFormattedEn}, ${dayNameEn}`
   };
 }
