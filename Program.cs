@@ -25,29 +25,15 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 var app = builder.Build();
 
-// Ensure SQLite Database Schema & Seed Data exist on startup
+// Ensure SQLite Database Schema & Seed Data exist on startup without wiping existing data
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     
-    // Auto-reset database if categories/articles need to be updated to Sikkim/India content
-    bool needsReset = false;
-    try
-    {
-        needsReset = !dbContext.Categories.Any() || dbContext.Categories.Count() != 7 || dbContext.Articles.Any(a => a.TitleNp.Contains("नेपालमा") || (a.ContentEn != null && a.ContentEn.Contains("in Nepal")));
-    }
-    catch
-    {
-        needsReset = true;
-    }
-
-    if (needsReset)
-    {
-        dbContext.Database.EnsureDeleted();
-    }
+    // Creates database schema and default seeds if DB does not exist yet (never deletes existing records)
     dbContext.Database.EnsureCreated();
 
-    // Ensure default AdminUser exists
+    // Ensure default AdminUser exists if table is empty
     if (!dbContext.AdminUsers.Any())
     {
         dbContext.AdminUsers.Add(new AdminUser

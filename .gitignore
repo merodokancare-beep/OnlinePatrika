@@ -8,8 +8,14 @@ publish/
 *.sln.docstates
 
 # Database files
+*.db
 *.db-shm
 *.db-wal
+*.sqlite
+OnlinePatrika.db
+
+# User Uploaded Media
+wwwroot/uploads/
 
 # VS Code / Visual Studio
 .vscode/
